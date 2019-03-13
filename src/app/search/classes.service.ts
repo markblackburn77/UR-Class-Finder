@@ -42,18 +42,25 @@ export class ClassesService {
 
   addClassesFromResponse(response) {
     // Iterate through classes returned and add as objects
-    for (var c in response) {
+    for (let i = 0; i < response.length; i++) {
       this.addClass(
         new Class(
-          response[c]["class_name"],
-          response[c]["crn"],
-          response[c]["professor"],
-          response[c]["start_time"],
-          response[c]["end_time"],
-          response[c]["location"],
-          response[c]["department"]
+          response[i]["class_name"],
+          response[i]["crn"],
+          response[i]["professor"],
+          response[i]["start_time"],
+          response[i]["end_time"],
+          response[i]["location"],
+          response[i]["department"]
         )
       );
+
+      // Check if class is in cart on add (not exactly efficient)
+      for (let p = 0; p < this.prospectiveClasses.length; p++) {
+        if (this.classes[i].crn == this.prospectiveClasses[p].crn) {
+          this.classes[i].inCart = true;
+        }
+      }
     }
   }
 }
