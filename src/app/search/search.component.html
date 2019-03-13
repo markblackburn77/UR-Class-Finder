@@ -9,30 +9,56 @@
 <!-- MAIN CONTAINER -->
 <div class="container">
   <!-- SEARCH FORM -->
-  <div class="row mb-3">
-    <div class="input-group offset-lg-1 col-lg-2 mb-2">
-      <input class="form-control" type="text" placeholder="Class Name" />
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row mb-3">
+      <div class="input-group offset-lg-1 col-lg-2 mb-2">
+        <input
+          id="className"
+          name="className"
+          ngModel
+          class="form-control"
+          type="text"
+          placeholder="Class Name"
+        />
+      </div>
+      <div class="input-group col-lg-2 col-md-4 mb-2 col-sm-12">
+        <input
+          id="crn"
+          name="crn"
+          ngModel
+          class="form-control"
+          type="text"
+          placeholder="CRN"
+        />
+      </div>
+      <div class="input-group col-lg-2 col-md-5 mb-2 col-sm-8">
+        <input
+          id="professor"
+          name="professor"
+          ngModel
+          class="form-control"
+          type="text"
+          placeholder="Professor"
+        />
+      </div>
+      <div class="input-group col-lg-2 col-md-3 mb-2 col-sm-3">
+        <ss-multiselect-dropdown
+          id="department"
+          name="department"
+          ngModel
+          [options]="myOptions"
+          [texts]="myTexts"
+          [settings]="mySettings"
+          [(ngModel)]="optionsModel"
+        ></ss-multiselect-dropdown>
+      </div>
+      <div class="input-group col-lg-2 col-md-2 mb-2">
+        <button class="btn btn-outline-primary" type="submit">
+          Search
+        </button>
+      </div>
     </div>
-    <div class="input-group col-lg-2 col-md-4 mb-2 col-sm-12">
-      <input class="form-control" type="text" placeholder="CRN" />
-    </div>
-    <div class="input-group col-lg-2 col-md-5 mb-2 col-sm-8">
-      <input class="form-control" type="text" placeholder="Professor" />
-    </div>
-    <div class="input-group col-lg-2 col-md-3 mb-2 col-sm-3">
-      <ss-multiselect-dropdown
-        [options]="myOptions"
-        [texts]="myTexts"
-        [settings]="mySettings"
-        [(ngModel)]="optionsModel"
-      ></ss-multiselect-dropdown>
-    </div>
-    <div class="input-group col-xl-3 col-md-2 mb-2">
-      <button class="btn btn-outline-primary" type="button">
-        Search
-      </button>
-    </div>
-  </div>
+  </form>
 
   <!-- SEARCH RESULTS TABLE -->
   <table class="table table-hover color-grey">

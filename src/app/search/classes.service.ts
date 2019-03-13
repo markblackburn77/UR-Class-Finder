@@ -76,4 +76,12 @@ export class ClassesService {
       this.classes[index].posInCart + 1
     );
   }
+
+  clearClasses() {
+    this.classes = [];
+  }
+
+  addClass(c: Class) {
+    this.classes.push(c);
+  }
 }
