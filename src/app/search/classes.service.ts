@@ -1,53 +1,8 @@
 import { Class } from "../shared/class.model";
 
 export class ClassesService {
-  private classes: Class[] = [
-    new Class(
-      "Computer Science",
-      1231,
-      "Prof. Smith",
-      "9:00am",
-      "10:15am",
-      "JPSN 103",
-      "CMSC"
-    ),
-    new Class(
-      "Calculus",
-      1421,
-      "Prof. Rogers",
-      "11:00am",
-      "1:30pm",
-      "GOTY 004",
-      "MATH"
-    ),
-    new Class(
-      "Discrete Mathematics",
-      8523,
-      "Prof. Szajada",
-      "4:30pm",
-      "5:45pm",
-      "JPSN 103",
-      "CMSC"
-    ),
-    new Class(
-      "Spanish in the Media",
-      1231,
-      "Prof. Kissling",
-      "5:00pm",
-      "5:50pm",
-      "INTC 221",
-      "LAIS"
-    ),
-    new Class(
-      "Intro to Economics",
-      7351,
-      "Prof. Vanderwergen",
-      "3:00pm",
-      "5:15pm",
-      "BUS 106",
-      "ACCT"
-    )
-  ];
+  private classes: Class[] = [];
+
   public prospectiveClasses: Class[] = [];
 
   getClasses() {
@@ -83,5 +38,22 @@ export class ClassesService {
 
   addClass(c: Class) {
     this.classes.push(c);
+  }
+
+  addClassesFromResponse(response) {
+    // Iterate through classes returned and add as objects
+    for (var c in response) {
+      this.addClass(
+        new Class(
+          response[c]["class_name"],
+          response[c]["crn"],
+          response[c]["professor"],
+          response[c]["start_time"],
+          response[c]["end_time"],
+          response[c]["location"],
+          response[c]["department"]
+        )
+      );
+    }
   }
 }

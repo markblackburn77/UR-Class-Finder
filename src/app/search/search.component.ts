@@ -70,37 +70,30 @@ export class SearchComponent implements OnInit {
   crn: "";
   professor: "";
   department: "";
-  submitted = false;
 
   constructor(
-    private classesService: ClassesService,
-    private httpService: HttpService
+    private classesService: ClassesService, // Inject Classes Service
+    private httpService: HttpService // Inject HTTP Service
   ) {}
 
   ngOnInit() {
+    // Set classes to classes stored in classes service
     this.classes = this.classesService.getClasses();
   }
 
   getClassesData(formData) {
     this.httpService.sendData(formData).subscribe(
+      // Add classes in classes service if successful
       response => {
-        for (var c in response) {
-          this.classesService.clearClasses();
-          this.classesService.addClass(
-            new Class(
-              response[c]["class_name"],
-              response[c]["crn"],
-              response[c]["professor"],
-              response[c]["start_time"],
-              response[c]["end_time"],
-              response[c]["location"],
-              response[c]["department"]
-            )
-          );
-        }
+        this.classesService.clearClasses();
+        this.classesService.addClassesFromResponse(response);
       },
+      // Log error if error
       error => console.log(error),
-      () => (this.classes = this.classesService.getClasses())
+      // If request completed, render classes and clear all from previous search
+      () => {
+        this.classes = this.classesService.getClasses();
+      }
     );
   }
 
@@ -112,13 +105,8 @@ export class SearchComponent implements OnInit {
     this.classesService.removeFromCart(i);
   }
 
-  onChange() {
-    console.log(this.optionsModel);
-  }
-
   onSubmit() {
     // Assign variables from form
-    this.submitted = true;
     this.className = this.searchForm.value.className;
     this.crn = this.searchForm.value.crn;
     this.professor = this.searchForm.value.professor;
