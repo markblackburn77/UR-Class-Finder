@@ -26,10 +26,7 @@ export class ClassesService {
     // Toggle the class being in a cart
     this.classes[index].inCart = false;
     // Remove the class from the cart
-    this.prospectiveClasses.splice(
-      this.classes[index].posInCart,
-      this.classes[index].posInCart + 1
-    );
+    this.prospectiveClasses.splice(this.classes[index].posInCart);
   }
 
   clearClasses() {
