@@ -110,14 +110,18 @@ export class SearchComponent implements OnInit {
     this.className = this.searchForm.value.className;
     this.crn = this.searchForm.value.crn;
     this.professor = this.searchForm.value.professor;
-    this.department = this.searchForm.value.department;
+    var departments_list: string[] = [];
+    for (var i in this.searchForm.value.department) {
+      departments_list.push(this.myOptions[i].name);
+    }
+    // this.department = this.searchForm.value.department;
 
     // Format the data a little
     let formatted_data = {
       class_name: this.className,
       crn: this.crn,
       professor: this.professor,
-      department: this.department
+      department: departments_list
     };
 
     // Send request to server
