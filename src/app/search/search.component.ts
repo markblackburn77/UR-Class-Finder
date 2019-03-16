@@ -55,12 +55,12 @@ export class SearchComponent implements OnInit {
 
   // Labels / Parents
   myOptions: IMultiSelectOption[] = [
-    { id: 1, name: "CMSC" },
-    { id: 2, name: "Biology" },
-    { id: 3, name: "Chemistry" },
-    { id: 4, name: "Art" },
-    { id: 5, name: "Mathematics" },
-    { id: 6, name: "LAIS" }
+    { id: "CMSC", name: "CMSC" },
+    { id: "BIO", name: "Biology" },
+    { id: "CHEM", name: "Chemistry" },
+    { id: "ART", name: "Art" },
+    { id: "MATH", name: "Mathematics" },
+    { id: "LAIS", name: "LAIS" }
   ];
 
   // Setup template driven form
@@ -110,21 +110,20 @@ export class SearchComponent implements OnInit {
     this.className = this.searchForm.value.className;
     this.crn = this.searchForm.value.crn;
     this.professor = this.searchForm.value.professor;
-    var departments_list: string[] = [];
-    for (var i in this.searchForm.value.department) {
-      departments_list.push(this.myOptions[i].name);
-    }
-    // this.department = this.searchForm.value.department;
 
     // Format the data a little
     let formatted_data = {
       class_name: this.className,
       crn: this.crn,
       professor: this.professor,
-      department: departments_list
+      department: this.optionsModel
     };
 
     // Send request to server
     this.getClassesData(formatted_data);
+  }
+
+  onChange() {
+    console.log(this.optionsModel);
   }
 }
