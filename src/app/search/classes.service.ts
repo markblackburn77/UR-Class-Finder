@@ -37,6 +37,10 @@ export class ClassesService {
     this.classes.push(c);
   }
 
+  setClasses(c: Class[]) {
+    this.classes = c;
+  }
+
   addClassesFromResponse(response) {
     // Iterate through classes returned and add as objects
     for (let i = 0; i < response.length; i++) {

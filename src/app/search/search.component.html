@@ -1,7 +1,17 @@
-<div class="alert alert-warning">
+<!-- Popup if backend server is unreacheable -->
+<div class="alert alert-warning" *ngIf="serverUnreacheable">
+  <a
+    (click)="serverUnreacheable = false"
+    class="close"
+    data-dismiss="alert"
+    aria-label="close"
+    >&times;</a
+  >
   <strong>Attention:</strong> There was an error connecting to the backend
   server. You can show test data here to see how the app works
-  <button class="btn btn-outline-dark ml-3">Test Data</button>
+  <button class="btn btn-outline-dark ml-3" (click)="onClickTestData()">
+    Test Data
+  </button>
 </div>
 <!-- HEADING -->
 <h1 class="display-3 text-center heading mb-0">

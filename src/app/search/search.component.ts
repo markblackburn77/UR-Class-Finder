@@ -12,7 +12,10 @@ import { DropdownSettings } from "./dropdown.settings";
   encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
+  // Store classes for table
   classes: Class[];
+
+  serverUnreacheable: boolean = false;
 
   /* Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];
@@ -22,6 +25,7 @@ export class SearchComponent implements OnInit {
 
   // Setup template driven form
   @ViewChild("f") searchForm: NgForm;
+
   // Initial form values
   className: "";
   crn: "";
@@ -45,9 +49,9 @@ export class SearchComponent implements OnInit {
         this.classesService.clearClasses();
         this.classesService.addClassesFromResponse(response);
       },
-      // Log error if error
-      error => console.log(error),
-      // If request completed, render classes and clear all from previous search
+      // Change variable for popup if error
+      error => (this.serverUnreacheable = true),
+      // If completed, render classes and clear all from previous search
       () => {
         this.classes = this.classesService.getClasses();
       }
@@ -86,5 +90,55 @@ export class SearchComponent implements OnInit {
     console.log(this.dropdownSelectedValues);
   }
 
-  onClickTestData() {}
+  // Populate table with test classes to demo app without backend
+  onClickTestData() {
+    this.classesService.setClasses([
+      new Class(
+        "Computer Science",
+        1234,
+        "Lewis Bartnett",
+        "9:00am",
+        "10:15am",
+        "JPSN 103",
+        "CMSC"
+      ),
+      new Class(
+        "Calculus",
+        5242,
+        "George Rogers",
+        "3:00pm",
+        "5:00pm",
+        "JPSN 214",
+        "MATH"
+      ),
+      new Class(
+        "Spanish in the Media",
+        3255,
+        "Leslie Kissling",
+        "12:00pm",
+        "1:15pm",
+        "INTC 214",
+        "LAIS"
+      ),
+      new Class(
+        "Intro to Microeconomics",
+        6421,
+        "Grace Vanderwegen",
+        "3:00pm",
+        "4:15pm",
+        "BUS 300",
+        "ECON"
+      ),
+      new Class(
+        "Who do you Trust?",
+        1233,
+        "Carol Wittig",
+        "5:00pm",
+        "6:00pm",
+        "LIBR 155",
+        "FYS"
+      )
+    ]);
+    this.classes = this.classesService.getClasses();
+  }
 }
