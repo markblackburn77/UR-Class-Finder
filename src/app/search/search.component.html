@@ -1,3 +1,8 @@
+<div class="alert alert-warning">
+  <strong>Attention:</strong> There was an error connecting to the backend
+  server. You can show test data here to see how the app works
+  <button class="btn btn-outline-dark ml-3">Test Data</button>
+</div>
 <!-- HEADING -->
 <h1 class="display-3 text-center heading mb-0">
   Welcome to UR Class Finder.
@@ -5,7 +10,6 @@
 <h3 class="text-muted display-5 text-center pb-3 sub">
   <small>It's so much better than the Bannerweb one.</small>
 </h3>
-
 <!-- MAIN CONTAINER -->
 <div class="container">
   <!-- SEARCH FORM -->
@@ -46,10 +50,11 @@
           id="department"
           name="department"
           ngModel
-          [options]="myOptions"
-          [texts]="myTexts"
-          [settings]="mySettings"
-          [(ngModel)]="optionsModel"
+          [options]="dropdownOptions"
+          [texts]="dropdownTextsSettings"
+          [settings]="dropdownRegSettings"
+          [(ngModel)]="dropdownSelectedValues"
+          (ngModelChange)="onChange($event)"
         ></ss-multiselect-dropdown>
       </div>
       <div class="input-group col-lg-2 col-md-2 mb-2">
@@ -90,4 +95,7 @@
       </tr>
     </tbody>
   </table>
+  <h4 class="text-center text-muted display-5" *ngIf="classes.length == 0">
+    <small>Search above to find classes...</small>
+  </h4>
 </div>

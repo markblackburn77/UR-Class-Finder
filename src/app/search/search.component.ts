@@ -1,19 +1,9 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ViewEncapsulation,
-  ViewChild
-} from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { ClassesService } from "./classes.service";
 import { Class } from "../shared/class.model";
-import {
-  IMultiSelectOption,
-  IMultiSelectTexts,
-  IMultiSelectSettings
-} from "angular-2-dropdown-multiselect";
 import { HttpService } from "./http.service";
 import { NgForm } from "@angular/forms";
+import { DropdownSettings } from "./dropdown.settings";
 
 @Component({
   selector: "app-search",
@@ -25,43 +15,10 @@ export class SearchComponent implements OnInit {
   classes: Class[];
 
   /* Settings for the multi select dropdown menu */
-  // Default selection
-  optionsModel: number[] = [];
-
-  // Settings configuration
-  mySettings: IMultiSelectSettings = {
-    enableSearch: true,
-    checkedStyle: "fontawesome",
-    buttonClasses: "btn btn-outline-dark",
-    dynamicTitleMaxItems: 0,
-    displayAllSelectedText: false,
-    showCheckAll: true,
-    showUncheckAll: true,
-    maxHeight: "200px"
-  };
-
-  // Text configuration
-  myTexts: IMultiSelectTexts = {
-    checkAll: "Select all",
-    uncheckAll: "Unselect all",
-    checked: "selected",
-    checkedPlural: "selected",
-    searchPlaceholder: "Search",
-    searchEmptyResult: "Nothing found...",
-    searchNoRenderText: "Type in search box to see results...",
-    defaultTitle: "Department",
-    allSelected: "All selected"
-  };
-
-  // Labels / Parents
-  myOptions: IMultiSelectOption[] = [
-    { id: "CMSC", name: "CMSC" },
-    { id: "BIO", name: "Biology" },
-    { id: "CHEM", name: "Chemistry" },
-    { id: "ART", name: "Art" },
-    { id: "MATH", name: "Mathematics" },
-    { id: "LAIS", name: "LAIS" }
-  ];
+  dropdownSelectedValues: number[] = [];
+  dropdownOptions = DropdownSettings.myOptions;
+  dropdownTextsSettings = DropdownSettings.myTexts;
+  dropdownRegSettings = DropdownSettings.mySettings;
 
   // Setup template driven form
   @ViewChild("f") searchForm: NgForm;
@@ -106,6 +63,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.searchForm);
     // Assign variables from form
     this.className = this.searchForm.value.className;
     this.crn = this.searchForm.value.crn;
@@ -116,14 +74,17 @@ export class SearchComponent implements OnInit {
       class_name: this.className,
       crn: this.crn,
       professor: this.professor,
-      department: this.optionsModel
+      department: this.dropdownSelectedValues
     };
 
     // Send request to server
     this.getClassesData(formatted_data);
   }
 
+  // onChange mostly for testing right now
   onChange() {
-    console.log(this.optionsModel);
+    console.log(this.dropdownSelectedValues);
   }
+
+  onClickTestData() {}
 }
