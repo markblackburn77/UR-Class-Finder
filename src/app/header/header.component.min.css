@@ -1,0 +1,17 @@
+.navbar {
+  box-shadow: 1px 0.5px 4px #003876;
+  background: rgba(0, 56, 118, 0.3);
+}
+.navbar-brand {
+  color: #003876;
+}
+.fa-shopping-cart {
+  color: #003876;
+}
+.badge-cart {
+  background-color: #8b0000;
+  color: #fff;
+  position: relative;
+  top: -6px;
+  left: -4px;
+}
