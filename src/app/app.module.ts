@@ -8,9 +8,10 @@ import { ClassesService } from "./search/classes.service";
 import { DropdownDirective } from "./shared/dropdown.directive";
 import { HttpModule, JsonpModule } from "@angular/http";
 import { HttpService } from "./search/http.service";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, DropdownDirective],
+  declarations: [AppComponent, SearchComponent, DropdownDirective, HeaderComponent],
   imports: [
     BrowserModule,
     MultiselectDropdownModule,
