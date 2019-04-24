@@ -1,5 +1,5 @@
 <!-- Popup if backend server is unreacheable -->
-<div class="alert alert-warning" *ngIf="serverUnreacheable">
+<div class="alert alert-warning text-center" *ngIf="serverUnreacheable">
   <a
     (click)="serverUnreacheable = false"
     class="close"
@@ -14,7 +14,7 @@
   </button>
 </div>
 <!-- HEADING -->
-<h1 class="display-3 text-center heading mb-0">
+<h1 class="display-3 text-center heading mb-0 text-primary">
   Welcome to UR Class Finder.
 </h1>
 <h3 class="text-muted display-5 text-center pb-3 sub">
@@ -91,7 +91,7 @@
     <tbody>
       <tr *ngFor="let class of classes; let i = index">
         <td>
-          <button class="btn btn-outline-dark btn-sm ">
+          <button class="btn btn-outline-primary btn-sm ">
             <div *ngIf="!class.inCart" (click)="addToCart(i)">Add</div>
             <div *ngIf="class.inCart" (click)="removeFromCart(i)">Remove</div>
           </button>

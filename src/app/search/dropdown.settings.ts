@@ -34,7 +34,7 @@ export class DropdownSettings {
   public static mySettings: IMultiSelectSettings = {
     enableSearch: true,
     checkedStyle: "fontawesome",
-    buttonClasses: "btn btn-outline-dark",
+    buttonClasses: "btn btn-outline-primary",
     dynamicTitleMaxItems: 0,
     displayAllSelectedText: false,
     showCheckAll: true,
