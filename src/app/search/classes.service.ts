@@ -51,14 +51,17 @@ export class ClassesService {
           response[i]["professor"],
           response[i]["start_time"],
           response[i]["end_time"],
-          response[i]["location"],
+          response[i]["building"],
           response[i]["department"]
         )
       );
 
       // Check if class is in cart on add (not exactly efficient)
       for (let p = 0; p < this.prospectiveClasses.length; p++) {
-        if (this.classes[i].crn == this.prospectiveClasses[p].crn) {
+        if (
+          this.classes[i].startTime == this.prospectiveClasses[p].startTime &&
+          this.classes[i].crn == this.prospectiveClasses[p].crn
+        ) {
           this.classes[i].inCart = true;
         }
       }
