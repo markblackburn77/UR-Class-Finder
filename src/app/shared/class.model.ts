@@ -8,7 +8,8 @@ export class Class {
     public startTime: string,
     public endTime: string,
     public location: string,
-    public subject: string
+    public subject: string,
+    public weekCode: string
   ) {
     this.inCart = false;
   }

@@ -12,12 +12,13 @@ import { DropdownSettings } from "./dropdown.settings";
   encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
-  // Store classes for table
+  /** Classes to be displayed in table */
   classes: Class[];
 
+  /** Boolean if server responds correctly */
   serverUnreacheable: boolean = false;
 
-  /* Settings for the multi select dropdown menu */
+  /** Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];
   dropdownOptions = DropdownSettings.myOptions;
   dropdownTextsSettings = DropdownSettings.myTexts;
@@ -42,6 +43,11 @@ export class SearchComponent implements OnInit {
     this.classes = this.classesService.getClasses();
   }
 
+  /**
+   * Sends the data from the form to the API and handles response
+   *
+   * @param formData form data from template driven form
+   */
   getClassesData(formData) {
     this.httpService.sendData(formData).subscribe(
       // Add classes in classes service if successful
@@ -58,16 +64,28 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  /**
+   * Add a class to the cart
+   *
+   * @param i index of class object in classes list
+   */
   addToCart(i: number) {
     this.classesService.addToCart(i);
   }
 
+  /**
+   * Remove a class from the cart
+   *
+   * @param i index of class object in classes list
+   */
   removeFromCart(i: number) {
     this.classesService.removeFromCart(i);
   }
 
+  /**
+   * Runs on form submission, sends correct data from forms to API
+   */
   onSubmit() {
-    console.log(this.searchForm);
     // Assign variables from form
     this.className = this.searchForm.value.className;
     this.crn = this.searchForm.value.crn;
@@ -90,7 +108,9 @@ export class SearchComponent implements OnInit {
     console.log(this.dropdownSelectedValues);
   }
 
-  // Populate table with test classes to demo app without backend
+  /**
+   * Populate table with test classes to demo app without backend running
+   */
   onClickTestData() {
     this.classesService.setClasses([
       new Class(
@@ -100,7 +120,8 @@ export class SearchComponent implements OnInit {
         "9:00am",
         "10:15am",
         "JPSN 103",
-        "CMSC"
+        "CMSC",
+        "MWF"
       ),
       new Class(
         "Calculus",
@@ -109,7 +130,8 @@ export class SearchComponent implements OnInit {
         "3:00pm",
         "5:00pm",
         "JPSN 214",
-        "MATH"
+        "MATH",
+        "TR"
       ),
       new Class(
         "Spanish in the Media",
@@ -118,7 +140,8 @@ export class SearchComponent implements OnInit {
         "12:00pm",
         "1:15pm",
         "INTC 214",
-        "LAIS"
+        "LAIS",
+        "MWF"
       ),
       new Class(
         "Intro to Microeconomics",
@@ -127,7 +150,8 @@ export class SearchComponent implements OnInit {
         "3:00pm",
         "4:15pm",
         "BUS 300",
-        "ECON"
+        "ECON",
+        "MWF"
       ),
       new Class(
         "Who do you Trust?",
@@ -136,7 +160,8 @@ export class SearchComponent implements OnInit {
         "5:00pm",
         "6:00pm",
         "LIBR 155",
-        "FYS"
+        "FYS",
+        "TR"
       )
     ]);
     this.classes = this.classesService.getClasses();

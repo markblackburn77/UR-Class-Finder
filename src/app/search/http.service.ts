@@ -10,6 +10,10 @@ export class HttpService {
 
   constructor(private http: Http) {}
 
+  /**
+   * Encode data and send request to API
+   * @param data dictionary of params to send to server
+   */
   sendData(data): Observable<Object> {
     // Encode the parameters in the URL
     let urlSearchParams = new URLSearchParams();
