@@ -1,27 +1,40 @@
 import { Class } from "../shared/class.model";
 
 export class ClassesService {
+  /** All loaded classes */
   private classes: Class[] = [];
 
+  /** Classes in the "cart" */
   public prospectiveClasses: Class[] = [];
 
+  /**
+   * Returns a copy of the class list (but not the actual list)
+   */
   getClasses() {
-    // Return copy of the class list, not the actual list
     return this.classes.slice();
   }
 
+  /**
+   * Add a class to the cart
+   *
+   * @param index of the class object within the classes list
+   */
   addToCart(index: number) {
-    // Class in question
+    // Select the class
     let currClass = this.classes[index];
-    // Toggle instance variable of class obj being in cart
+    // Change variable in class to true
     currClass.inCart = true;
-    // Assign instance variable position obj will be in cart
-    // This is done for efficiency when removing
+    // Keep track of position in cart
     currClass.posInCart = this.prospectiveClasses.length;
-    // Add a copy of class that was added to another list of classes
+    // Add copy of class to cart
     this.prospectiveClasses.push(this.classes.slice(index, index + 1)[0]);
   }
 
+  /**
+   * Remove a class from the cart
+   *
+   * @param index of the class object within the classes list
+   */
   removeFromCart(index: number) {
     // Toggle the class being in a cart
     this.classes[index].inCart = false;
@@ -29,18 +42,36 @@ export class ClassesService {
     this.prospectiveClasses.splice(this.classes[index].posInCart);
   }
 
+  /**
+   * Clear all of the loaded classes
+   */
   clearClasses() {
     this.classes = [];
   }
 
+  /**
+   * Add a class to the list of classes
+   *
+   * @param c new class object
+   */
   addClass(c: Class) {
     this.classes.push(c);
   }
 
+  /**
+   * Set the list of classes to a new list
+   *
+   * @param c new list of class objects
+   */
   setClasses(c: Class[]) {
     this.classes = c;
   }
 
+  /**
+   * Parse JSON response from API into class objects
+   *
+   * @param response JSON response from API
+   */
   addClassesFromResponse(response) {
     // Iterate through classes returned and add as objects
     for (let i = 0; i < response.length; i++) {
@@ -52,12 +83,14 @@ export class ClassesService {
           response[i]["start_time"],
           response[i]["end_time"],
           response[i]["building"],
-          response[i]["department"]
+          response[i]["department"],
+          response[i]["week_code"]
         )
       );
 
-      // Check if class is in cart on add (not exactly efficient)
+      // Check if class is in cart on add
       for (let p = 0; p < this.prospectiveClasses.length; p++) {
+        // Check based on start time and crn, since classes can have same crn
         if (
           this.classes[i].startTime == this.prospectiveClasses[p].startTime &&
           this.classes[i].crn == this.prospectiveClasses[p].crn
