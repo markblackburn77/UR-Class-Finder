@@ -4,6 +4,7 @@ import { Class } from "../shared/class.model";
 import { HttpService } from "./http.service";
 import { NgForm } from "@angular/forms";
 import { DropdownSettings } from "./dropdown.settings";
+import { MeetingTime } from "../shared/meeting-time.model";
 
 @Component({
   selector: "app-search",
@@ -117,51 +118,41 @@ export class SearchComponent implements OnInit {
         "Computer Science",
         1234,
         "Lewis Bartnett",
-        "9:00am",
-        "10:15am",
+        [new MeetingTime("9:00am", "10:15am", "MWF")],
         "JPSN 103",
-        "CMSC",
-        "MWF"
+        "CMSC"
       ),
       new Class(
         "Calculus",
         5242,
         "George Rogers",
-        "3:00pm",
-        "5:00pm",
+        [new MeetingTime("3:00pm", "5:00pm", "TR")],
         "JPSN 214",
-        "MATH",
-        "TR"
+        "MATH"
       ),
       new Class(
         "Spanish in the Media",
         3255,
         "Leslie Kissling",
-        "12:00pm",
-        "1:15pm",
+        [new MeetingTime("12:00pm", "1:15pm", "MWF")],
         "INTC 214",
-        "LAIS",
-        "MWF"
+        "LAIS"
       ),
       new Class(
         "Intro to Microeconomics",
         6421,
         "Grace Vanderwegen",
-        "3:00pm",
-        "4:15pm",
+        [new MeetingTime("3:00pm", "4:15pm", "MWF")],
         "BUS 300",
-        "ECON",
-        "MWF"
+        "ECON"
       ),
       new Class(
         "Who do you Trust?",
         1233,
         "Carol Wittig",
-        "5:00pm",
-        "6:00pm",
+        [new MeetingTime("5:00pm", "6:00pm", "TR")],
         "LIBR 155",
-        "FYS",
-        "TR"
+        "FYS"
       )
     ]);
     this.classes = this.classesService.getClasses();

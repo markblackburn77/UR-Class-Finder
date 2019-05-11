@@ -1,4 +1,5 @@
 import { Class } from "../shared/class.model";
+import { MeetingTime } from "../shared/meeting-time.model";
 
 export class ClassesService {
   /** All loaded classes */
@@ -50,12 +51,25 @@ export class ClassesService {
   }
 
   /**
-   * Add a class to the list of classes
+   * Add a class to the list of classes. Also checks if a duplicate
+   * exists (such as in the case of a lab) and adds to the existing object
+   *
+   * TODO: Optimization- move the logic for actually creating a class object to this
+   * function, so that you could check for duplicates before creating the object.
    *
    * @param c new class object
    */
   addClass(c: Class) {
-    this.classes.push(c);
+    let duplicates: Class[] = this.classes.filter(x => x.crn == c.crn);
+    if (duplicates.length > 0) {
+      for (var i = 0; i < duplicates.length; i++) {
+        duplicates[i].meetingTimes = duplicates[i].meetingTimes.concat(
+          c.meetingTimes
+        );
+      }
+    } else {
+      this.classes.push(c);
+    }
   }
 
   /**
@@ -80,21 +94,22 @@ export class ClassesService {
           response[i]["class_name"],
           response[i]["crn"],
           response[i]["professor"],
-          response[i]["start_time"],
-          response[i]["end_time"],
+          [
+            new MeetingTime(
+              response[i]["start_time"],
+              response[i]["end_time"],
+              response[i]["week_code"]
+            )
+          ],
           response[i]["building"],
-          response[i]["department"],
-          response[i]["week_code"]
+          response[i]["department"]
         )
       );
 
       // Check if class is in cart on add
       for (let p = 0; p < this.prospectiveClasses.length; p++) {
         // Check based on start time and crn, since classes can have same crn
-        if (
-          this.classes[i].startTime == this.prospectiveClasses[p].startTime &&
-          this.classes[i].crn == this.prospectiveClasses[p].crn
-        ) {
+        if (this.classes[i].crn == this.prospectiveClasses[p].crn) {
           this.classes[i].inCart = true;
         }
       }
