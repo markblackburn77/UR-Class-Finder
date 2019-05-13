@@ -51,28 +51,6 @@ export class ClassesService {
   }
 
   /**
-   * Add a class to the list of classes. Also checks if a duplicate
-   * exists (such as in the case of a lab) and adds to the existing object
-   *
-   * TODO: Optimization- move the logic for actually creating a class object to this
-   * function, so that you could check for duplicates before creating the object.
-   *
-   * @param c new class object
-   */
-  addClass(c: Class) {
-    let duplicates: Class[] = this.classes.filter(x => x.crn == c.crn);
-    if (duplicates.length > 0) {
-      for (var i = 0; i < duplicates.length; i++) {
-        duplicates[i].meetingTimes = duplicates[i].meetingTimes.concat(
-          c.meetingTimes
-        );
-      }
-    } else {
-      this.classes.push(c);
-    }
-  }
-
-  /**
    * Set the list of classes to a new list
    *
    * @param c new list of class objects
@@ -86,33 +64,62 @@ export class ClassesService {
    *
    * @param response JSON response from API
    */
-  addClassesFromResponse(response) {
+  addClassesFromResponse(response): void {
     // Iterate through classes returned and add as objects
     for (let i = 0; i < response.length; i++) {
-      this.addClass(
-        new Class(
-          response[i]["class_name"],
-          response[i]["crn"],
-          response[i]["professor"],
-          [
-            new MeetingTime(
-              response[i]["start_time"],
-              response[i]["end_time"],
-              response[i]["week_code"]
-            )
-          ],
-          response[i]["building"],
-          response[i]["department"]
-        )
+      // Create new class object
+      let newClass: Class = new Class(
+        response[i]["class_name"],
+        response[i]["crn"],
+        response[i]["professor"],
+        [
+          new MeetingTime(
+            response[i]["start_time"],
+            response[i]["end_time"],
+            response[i]["week_code"]
+          )
+        ],
+        response[i]["building"],
+        response[i]["department"]
       );
 
-      // Check if class is in cart on add
-      for (let p = 0; p < this.prospectiveClasses.length; p++) {
-        // Check based on start time and crn, since classes can have same crn
-        if (this.classes[i].crn == this.prospectiveClasses[p].crn) {
-          this.classes[i].inCart = true;
-        }
+      this.addClass(newClass);
+    }
+  }
+
+  /**
+   * Add a class to the list of classes. Also checks if a duplicate
+   * exists or if the class is currently in the cart ("prospective classes")
+   *
+   * @param c new class object
+   */
+  private addClass(c: Class) {
+    // Check for duplicates already in classes list
+    let duplicates: Class[] = this.classes.filter(x => x.crn == c.crn);
+    if (duplicates.length > 0) {
+      duplicates[0].meetingTimes = duplicates[0].meetingTimes.concat(
+        c.meetingTimes
+      );
+    } else {
+      // Check if class is in cart
+      if (this.classInCart(c)) {
+        c.inCart = true;
+      }
+      this.classes.push(c);
+    }
+  }
+
+  /**
+   * Check if a given class is in the cart. Returns boolean value
+   *
+   * @param c Class object
+   */
+  private classInCart(c: Class): boolean {
+    for (var i = 0; i < this.prospectiveClasses.length; i++) {
+      if (c.crn == this.prospectiveClasses[i].crn) {
+        return true;
       }
     }
+    return false;
   }
 }
