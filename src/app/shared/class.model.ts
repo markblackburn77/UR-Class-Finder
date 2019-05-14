@@ -1,7 +1,6 @@
 import { MeetingTime } from "./meeting-time.model";
 export class Class {
   public inCart: boolean;
-  public posInCart: number;
   constructor(
     public name: string,
     public crn: number,
