@@ -68,19 +68,19 @@ export class SearchComponent implements OnInit {
   /**
    * Add a class to the cart
    *
-   * @param i index of class object in classes list
+   * @param c class object in classes list
    */
-  addToCart(i: number) {
-    this.classesService.addToCart(i);
+  addToCart(c: Class) {
+    this.classesService.addToCart(c);
   }
 
   /**
    * Remove a class from the cart
    *
-   * @param i index of class object in classes list
+   * @param c class object in classes list
    */
-  removeFromCart(i: number) {
-    this.classesService.removeFromCart(i);
+  removeFromCart(c: Class) {
+    this.classesService.removeFromCart(c);
   }
 
   /**
