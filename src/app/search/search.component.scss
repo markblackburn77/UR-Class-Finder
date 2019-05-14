@@ -1,6 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/scss/_variables.scss";
 
+html,
+body {
+  height: 100vh;
+  background-color: #f7f7f7;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: #424242;
@@ -36,3 +44,50 @@ ss-multiselect-dropdown {
 th {
   color: rgb(82, 82, 82);
 }
+
+.meeting-time-block {
+  font-size: 12px;
+  background-color: #2e6191;
+  color: white;
+  border-width: 30px;
+  border-radius: 7px 0px 0px 7px;
+  padding: 4px;
+}
+
+.week-code-block {
+  font-size: 12px;
+  background-color: #424242;
+  color: white;
+  border-width: 20px;
+  border-radius: 0px 7px 7px 0px;
+  padding: 4px;
+}
+
+.not-available-block {
+  font-size: 12px;
+  background-color: darkgoldenrod;
+  color: white;
+  border-width: 20px;
+  border-radius: 7px;
+  padding: 4px;
+}
+
+table td {
+  vertical-align: middle !important;
+}
+
+.meeting-times {
+  display: inline-block;
+}
+
+// Breakpoint to change CSS based on screen size
+// @media (max-width: 992px) {
+//   // .week-code-block,
+//   // .meeting-time-block,
+//   // .not-available-block {
+//   //   font-size: 8px;
+//   // }
+//   .additional {
+//     display: none;
+//   }
+// }
