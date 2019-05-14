@@ -75,39 +75,3 @@
     </div>
   </form>
 
-  <!-- SEARCH RESULTS TABLE -->
-  <table class="table table-hover color-grey">
-    <thead>
-      <tr>
-        <th>Action</th>
-        <th>Class Name</th>
-        <th>CRN</th>
-        <th>Week Code</th>
-        <th>Professor</th>
-        <th>Time</th>
-        <th>Location</th>
-        <th>Subject</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let class of classes; let i = index">
-        <td>
-          <button class="btn btn-outline-primary btn-sm ">
-            <div *ngIf="!class.inCart" (click)="addToCart(i)">Add</div>
-            <div *ngIf="class.inCart" (click)="removeFromCart(i)">Remove</div>
-          </button>
-        </td>
-        <td>{{ class.name }}</td>
-        <td>{{ class.crn }}</td>
-        <td class="text-center">{{ class.weekCode }}</td>
-        <td>{{ class.professor }}</td>
-        <td>{{ class.startTime }} - {{ class.endTime }}</td>
-        <td>{{ class.location }}</td>
-        <td>{{ class.subject }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 class="text-center text-muted display-5" *ngIf="classes.length == 0">
-    <small>Search above to find classes...</small>
-  </h4>
-</div>

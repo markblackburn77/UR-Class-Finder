@@ -1,0 +1,40 @@
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { Class } from "../shared/class.model";
+import { ClassesService } from "../shared/classes.service";
+
+@Component({
+  selector: "app-table",
+  templateUrl: "./table.component.html",
+  styleUrls: ["./table.component.scss"]
+})
+export class TableComponent implements OnInit {
+  // Input for classes to be displayed in table
+  @Input() classes: Class[];
+
+  // Inject classesService
+  constructor(private classesService: ClassesService) {}
+
+  ngOnInit() {}
+
+  // Event emitters
+  @Output() addButtonClicked = new EventEmitter();
+  @Output() removeButtonClicked = new EventEmitter();
+
+  /**
+   * Emit event to allow parent to deal with button presses
+   *
+   * @param c class object in classes list
+   */
+  addBtnClicked(c: Class) {
+    this.addButtonClicked.emit(c);
+  }
+
+  /**
+   * Emit event to allow parent to deal with button presses
+   *
+   * @param c class object in classes list
+   */
+  removeBtnClicked(c: Class) {
+    this.removeButtonClicked.emit(c);
+  }
+}
