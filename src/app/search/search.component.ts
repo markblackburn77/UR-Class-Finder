@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
-import { ClassesService } from "./classes.service";
+import { ClassesService } from "../shared/classes.service";
 import { Class } from "../shared/class.model";
 import { HttpService } from "./http.service";
 import { NgForm } from "@angular/forms";
 import { DropdownSettings } from "./dropdown.settings";
 import { MeetingTime } from "../shared/meeting-time.model";
+import { TableComponent } from "../table/table.component";
 
 @Component({
   selector: "app-search",
