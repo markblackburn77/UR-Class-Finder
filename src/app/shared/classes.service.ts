@@ -1,5 +1,5 @@
-import { Class } from "../shared/class.model";
-import { MeetingTime } from "../shared/meeting-time.model";
+import { Class } from "./class.model";
+import { MeetingTime } from "./meeting-time.model";
 
 export class ClassesService {
   /** All loaded classes */
@@ -15,20 +15,20 @@ export class ClassesService {
     return this.classes.slice();
   }
 
+  getProspectiveClasses() {
+    return this.prospectiveClasses.slice();
+  }
+
   /**
    * Add a class to the cart
    *
    * @param index of the class object within the classes list
    */
-  addToCart(index: number) {
-    // Select the class
-    let currClass = this.classes[index];
+  addToCart(c: Class) {
     // Change variable in class to true
-    currClass.inCart = true;
-    // Keep track of position in cart
-    currClass.posInCart = this.prospectiveClasses.length;
+    c.inCart = true;
     // Add copy of class to cart
-    this.prospectiveClasses.push(this.classes.slice(index, index + 1)[0]);
+    this.prospectiveClasses.push(c);
   }
 
   /**
@@ -36,11 +36,15 @@ export class ClassesService {
    *
    * @param index of the class object within the classes list
    */
-  removeFromCart(index: number) {
+  removeFromCart(c: Class) {
     // Toggle the class being in a cart
-    this.classes[index].inCart = false;
+    c.inCart = false;
     // Remove the class from the cart
-    this.prospectiveClasses.splice(this.classes[index].posInCart);
+    for (var i = 0; i < this.prospectiveClasses.length; i++) {
+      if (c.crn == this.prospectiveClasses[i].crn) {
+        this.prospectiveClasses.splice(i, 1);
+      }
+    }
   }
 
   /**
@@ -72,16 +76,24 @@ export class ClassesService {
         response[i]["class_name"],
         response[i]["crn"],
         response[i]["professor"],
-        [
+        [],
+        response[i]["building"],
+        response[i]["department"]
+      );
+
+      if (
+        response[i]["start_time"] &&
+        response[i]["end_time"] &&
+        response[i]["week_code"]
+      ) {
+        newClass.meetingTimes.push(
           new MeetingTime(
             response[i]["start_time"],
             response[i]["end_time"],
             response[i]["week_code"]
           )
-        ],
-        response[i]["building"],
-        response[i]["department"]
-      );
+        );
+      }
 
       this.addClass(newClass);
     }
