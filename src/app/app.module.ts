@@ -15,12 +15,19 @@ import { AppRoutingModule } from "./app-routing.module";
 import { TableComponent } from "./table/table.component";
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    DropdownDirective,
+    PlannerComponent,
+    TableComponent
+  ],
   imports: [
     BrowserModule,
     MultiselectDropdownModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
     AppRoutingModule
   ],
   providers: [ClassesService, HttpService],
