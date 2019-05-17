@@ -1,16 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { SearchComponent } from "./search.component";
+import { ClassesService } from "../shared/classes.service";
+import { HttpService } from "./http.service";
+import { FormsModule } from "@angular/forms";
+import { MultiselectDropdownModule } from "angular-2-dropdown-multiselect";
+import { TableComponent } from "../table/table.component";
+import { Http } from "@angular/http";
 
-import { SearchComponent } from './search.component';
-
-describe('SearchComponent', () => {
+describe("SearchComponent", () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
-    })
-    .compileComponents();
+      declarations: [SearchComponent, TableComponent],
+      imports: [FormsModule, MultiselectDropdownModule],
+      providers: [
+        { provide: ClassesService, useClass: ClassesService },
+        { provide: HttpService, useClass: HttpService },
+        { provide: Http }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +29,7 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
