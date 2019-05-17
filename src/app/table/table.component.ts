@@ -1,11 +1,19 @@
-import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  ViewEncapsulation
+} from "@angular/core";
 import { Class } from "../shared/class.model";
 import { ClassesService } from "../shared/classes.service";
 
 @Component({
   selector: "app-table",
   templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"]
+  styleUrls: ["./table.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit {
   // Input for classes to be displayed in table

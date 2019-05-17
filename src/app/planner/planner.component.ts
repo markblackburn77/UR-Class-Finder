@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ClassesService } from "../shared/classes.service";
 import { Class } from "../shared/class.model";
 
@@ -6,6 +7,8 @@ import { Class } from "../shared/class.model";
   selector: "app-planner",
   templateUrl: "./planner.component.html",
   styleUrls: ["./planner.component.scss"]
+  styleUrls: ["./planner.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class PlannerComponent implements OnInit {
   /** Prospective classes */
