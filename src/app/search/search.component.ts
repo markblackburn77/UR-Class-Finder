@@ -1,16 +1,15 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
-import { ClassesService } from "../shared/classes.service";
-import { Class } from "../shared/class.model";
-import { HttpService } from "./http.service";
-import { NgForm } from "@angular/forms";
-import { DropdownSettings } from "./dropdown.settings";
-import { MeetingTime } from "../shared/meeting-time.model";
-import { TableComponent } from "../table/table.component";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { ClassesService } from '../shared/classes.service';
+import { Class } from '../shared/class.model';
+import { HttpService } from '../shared/http.service';
+import { NgForm } from '@angular/forms';
+import { DropdownSettings } from './dropdown.settings';
+import { MeetingTime } from '../shared/meeting-time.model';
 
 @Component({
-  selector: "app-search",
-  templateUrl: "./search.component.html",
-  styleUrls: ["./search.component.scss"],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
@@ -27,13 +26,13 @@ export class SearchComponent implements OnInit {
   dropdownRegSettings = DropdownSettings.mySettings;
 
   // Setup template driven form
-  @ViewChild("f") searchForm: NgForm;
+  @ViewChild('f') searchForm: NgForm;
 
   // Initial form values
-  className: "";
-  crn: "";
-  professor: "";
-  department: "";
+  className: '';
+  crn: '';
+  professor: '';
+  department: '';
 
   constructor(
     private classesService: ClassesService, // Inject Classes Service
@@ -116,44 +115,44 @@ export class SearchComponent implements OnInit {
   onClickTestData() {
     this.classesService.setClasses([
       new Class(
-        "Computer Science",
+        'Computer Science',
         1234,
-        "Lewis Bartnett",
-        [new MeetingTime("9:00am", "10:15am", "MWF")],
-        "JPSN 103",
-        "CMSC"
+        'Lewis Bartnett',
+        [new MeetingTime('9:00am', '10:15am', 'MWF')],
+        'JPSN 103',
+        'CMSC'
       ),
       new Class(
-        "Calculus",
+        'Calculus',
         5242,
-        "George Rogers",
-        [new MeetingTime("3:00pm", "5:00pm", "TR")],
-        "JPSN 214",
-        "MATH"
+        'George Rogers',
+        [new MeetingTime('3:00pm', '5:00pm', 'TR')],
+        'JPSN 214',
+        'MATH'
       ),
       new Class(
-        "Spanish in the Media",
+        'Spanish in the Media',
         3255,
-        "Leslie Kissling",
-        [new MeetingTime("12:00pm", "1:15pm", "MWF")],
-        "INTC 214",
-        "LAIS"
+        'Leslie Kissling',
+        [new MeetingTime('12:00pm', '1:15pm', 'MWF')],
+        'INTC 214',
+        'LAIS'
       ),
       new Class(
-        "Intro to Microeconomics",
+        'Intro to Microeconomics',
         6421,
-        "Grace Vanderwegen",
-        [new MeetingTime("3:00pm", "4:15pm", "MWF")],
-        "BUS 300",
-        "ECON"
+        'Grace Vanderwegen',
+        [new MeetingTime('3:00pm', '4:15pm', 'MWF')],
+        'BUS 300',
+        'ECON'
       ),
       new Class(
-        "Who do you Trust?",
+        'Who do you Trust?',
         1233,
-        "Carol Wittig",
-        [new MeetingTime("5:00pm", "6:00pm", "TR")],
-        "LIBR 155",
-        "FYS"
+        'Carol Wittig',
+        [new MeetingTime('5:00pm', '6:00pm', 'TR')],
+        'LIBR 155',
+        'FYS'
       )
     ]);
     this.classes = this.classesService.getClasses();

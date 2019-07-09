@@ -5,14 +5,14 @@ import {
   EventEmitter,
   Output,
   ViewEncapsulation
-} from "@angular/core";
-import { Class } from "../shared/class.model";
-import { ClassesService } from "../shared/classes.service";
+} from '@angular/core';
+import { Class } from '../shared/class.model';
+import { ClassesService } from '../shared/classes.service';
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"],
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit {
