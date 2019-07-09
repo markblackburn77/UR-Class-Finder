@@ -38,46 +38,7 @@ input:-ms-input-placeholder {
 
 .form-control,
 ss-multiselect-dropdown {
-  background-color: #e4e2e259;
-}
-
-th {
-  color: rgb(82, 82, 82);
-}
-
-.meeting-time-block {
-  font-size: 12px;
-  background-color: #2e6191;
-  color: white;
-  border-width: 30px;
-  border-radius: 7px 0px 0px 7px;
-  padding: 4px;
-}
-
-.week-code-block {
-  font-size: 12px;
-  background-color: #424242;
-  color: white;
-  border-width: 20px;
-  border-radius: 0px 7px 7px 0px;
-  padding: 4px;
-}
-
-.not-available-block {
-  font-size: 12px;
-  background-color: darkgoldenrod;
-  color: white;
-  border-width: 20px;
-  border-radius: 7px;
-  padding: 4px;
-}
-
-table td {
-  vertical-align: middle !important;
-}
-
-.meeting-times {
-  display: inline-block;
+  background-color: #e4e2e259 !important;
 }
 
 // Breakpoint to change CSS based on screen size

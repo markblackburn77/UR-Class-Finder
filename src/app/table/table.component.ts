@@ -19,14 +19,14 @@ export class TableComponent implements OnInit {
   // Input for classes to be displayed in table
   @Input() classes: Class[];
 
+  // Event emitters
+  @Output() addButtonClicked = new EventEmitter();
+  @Output() removeButtonClicked = new EventEmitter();
+
   // Inject classesService
   constructor(private classesService: ClassesService) {}
 
   ngOnInit() {}
-
-  // Event emitters
-  @Output() addButtonClicked = new EventEmitter();
-  @Output() removeButtonClicked = new EventEmitter();
 
   /**
    * Emit event to allow parent to deal with button presses
