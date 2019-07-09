@@ -1,12 +1,9 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap/scss/_variables.scss";
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/_variables.scss';
 
-html,
-body {
-  height: 100vh;
-  background-color: #f7f7f7;
-  margin-right: 10px;
-  margin-left: 10px;
+.server-unreacheable {
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .dropdown-item.active,
