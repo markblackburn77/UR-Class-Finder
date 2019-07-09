@@ -1,17 +1,22 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { MultiselectDropdownModule } from "angular-2-dropdown-multiselect";
-import { FormsModule } from "@angular/forms";
-import { AppComponent } from "./app.component";
-import { SearchComponent } from "./search/search.component";
-import { ClassesService } from "./shared/classes.service";
-import { DropdownDirective } from "./shared/dropdown.directive";
-import { HttpModule, JsonpModule } from "@angular/http";
-import { HttpService } from "./search/http.service";
-import { PlannerComponent } from "./planner/planner.component";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search.component';
+import { ClassesService } from './shared/classes.service';
+import { DropdownDirective } from './shared/dropdown.directive';
+// import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './shared/http.service';
+import { PlannerComponent } from './planner/planner.component';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { TableComponent } from "./table/table.component";
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { AppRoutingModule } from './app-routing.module';
+import { TableComponent } from './table/table.component';
+import { ScheduleGenComponent } from './planner/schedule-gen/schedule-gen.component';
+import { ScheduleComponent } from './planner/schedule-gen/schedule/schedule.component';
+
+import { NgbPopoverModule, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,17 +24,19 @@ import { TableComponent } from "./table/table.component";
     SearchComponent,
     DropdownDirective,
     PlannerComponent,
-    TableComponent
+    TableComponent,
+    ScheduleGenComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
     MultiselectDropdownModule,
     FormsModule,
-    HttpModule,
-    JsonpModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    NgbPopoverModule
   ],
-  providers: [ClassesService, HttpService],
+  providers: [ClassesService, HttpService, NgbPopoverModule, NgbPopoverConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
