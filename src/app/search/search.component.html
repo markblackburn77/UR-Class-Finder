@@ -1,104 +1,125 @@
 <!-- Popup if backend server is unreacheable -->
 <div
-  class="alert alert-warning text-center server-unreacheable"
-  *ngIf="serverUnreacheable"
+    class="alert alert-warning text-center server-unreacheable"
+    *ngIf="serverUnreacheable"
 >
-  <a
-    (click)="serverUnreacheable = false"
-    class="close"
-    data-dismiss="alert"
-    aria-label="close"
-    >&times;</a
-  >
-  <strong>Attention:</strong> There was an error connecting to the backend
+    <a
+        (click)="serverUnreacheable = false"
+        class="close"
+        data-dismiss="alert"
+        aria-label="close"
+    >
+        &times;
+    </a>
+    <strong>Attention:</strong>
+    There was an error connecting to the backend
   server. You can show test data here to see how the app works
-  <button class="btn btn-outline-dark ml-3" (click)="onClickTestData()">
-    Test Data
-  </button>
+    <button
+        class="btn btn-outline-dark ml-3"
+        (click)="onClickTestData()"
+    >
+        Test Data
+    </button>
 </div>
 
 <div class="main">
-  <!------------------- HEADING ---------------------->
-  <h1 class="display-3 text-center heading mb-0 text-primary">
-    Welcome to UR Class Finder.
-  </h1>
-  <h3 class="text-muted display-5 text-center pb-3 sub">
-    <small>It's so much better than the Bannerweb one.</small>
-  </h3>
+    <!-- ----------------- HEADING -------------------- -->
+    <h1 class="display-3 text-center heading mb-0 text-primary">Welcome to UR Class Finder.</h1>
+    <h3 class="text-muted display-5 text-center pb-3 sub">
+        <small>
+            It's so much better than the Bannerweb one.
+        </small>
+    </h3>
 
-  <!------------------ SEARCH FORM ------------------->
-  <form class="form-inline" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="row mb-3 form-group" style="margin: 0 auto;">
-      <!-- Class name input -->
-      <div class="input-group mr-2">
-        <input
-          id="className"
-          name="className"
-          ngModel
-          class="form-control"
-          type="text"
-          placeholder="Class Name"
-        />
-      </div>
-      <!-- CRN input -->
-      <div class="input-group mr-2">
-        <input
-          id="crn"
-          name="crn"
-          ngModel
-          class="form-control"
-          type="text"
-          placeholder="CRN"
-        />
-      </div>
-      <!-- Professor input -->
-      <div class="input-group mr-2">
-        <input
-          id="professor"
-          name="professor"
-          ngModel
-          class="form-control"
-          type="text"
-          placeholder="Professor"
-        />
-      </div>
-      <!-- Department dropdown -->
-      <div class="input-group mr-2">
-        <ss-multiselect-dropdown
-          id="department"
-          name="department"
-          ngModel
-          [options]="dropdownOptions"
-          [texts]="dropdownTextsSettings"
-          [settings]="dropdownRegSettings"
-          [(ngModel)]="dropdownSelectedValues"
-        ></ss-multiselect-dropdown>
-      </div>
-      <!-- Search button -->
-      <div class="input-group mr-2">
-        <button class="btn btn-outline-primary" type="submit">
-          Search
-        </button>
-      </div>
-      <!-- Search button -->
-      <div
-        class="input-group"
-        *ngIf="this.classesService.currentCart.length > 0"
-      >
-        <button class="btn btn-primary" routerLink="planner">
-          Go to planner
-        </button>
-      </div>
-    </div>
-  </form>
+    <!-- ---------------- SEARCH FORM ----------------- -->
+    <form
+        class="form-inline"
+        (ngSubmit)="onSubmit(f)"
+        #f="ngForm"
+    >
+        <div
+            class="row mb-3 form-group"
+            style="margin: 0 auto;"
+        >
+            <!-- Class name input -->
+            <div class="input-group mr-2">
+                <input
+                    id="className"
+                    name="className"
+                    ngModel
+                    class="form-control"
+                    type="text"
+                    placeholder="Class Name"
+                >
+            </div>
+            <!-- CRN input -->
+            <div class="input-group mr-2">
+                <input
+                    id="crn"
+                    name="crn"
+                    ngModel
+                    class="form-control"
+                    type="text"
+                    placeholder="CRN"
+                >
+            </div>
+            <!-- Professor input -->
+            <div class="input-group mr-2">
+                <input
+                    id="professor"
+                    name="professor"
+                    ngModel
+                    class="form-control"
+                    type="text"
+                    placeholder="Professor"
+                >
+            </div>
+            <!-- Department dropdown -->
+            <div class="input-group mr-2">
+                <ss-multiselect-dropdown
+                    id="department"
+                    name="department"
+                    ngModel
+                    [options]="dropdownOptions"
+                    [texts]="dropdownTextsSettings"
+                    [settings]="dropdownRegSettings"
+                    [(ngModel)]="dropdownSelectedValues"
+                ></ss-multiselect-dropdown>
+            </div>
+            <!-- Search button -->
+            <div class="input-group mr-2">
+                <button
+                    class="btn btn-outline-primary"
+                    type="submit"
+                >
+                    Search
+                </button>
+            </div>
+            <!-- Search button -->
+            <div
+                class="input-group"
+                *ngIf="this.classesService.getCurrentCart().length > 0"
+            >
+                <button
+                    class="btn btn-primary"
+                    routerLink="planner"
+                >
+                    Go to planner
+                </button>
+            </div>
+        </div>
+    </form>
 
-  <app-table
-    [classes]="classes"
-    (addButtonClicked)="addToCart($event)"
-    (removeButtonClicked)="removeFromCart($event)"
-  ></app-table>
-  <!-- Placeholder text before data is loaded by search -->
-  <h4 class="text-center text-muted display-5" *ngIf="classes.length == 0">
-    <small>Search above to find classes...</small>
-  </h4>
+    <app-table
+        [classes]="classes"
+        (addButtonClicked)="addToCart($event)"
+        (removeButtonClicked)="removeFromCart($event)"
+    ></app-table>
+    <!-- Placeholder text before data is loaded by search -->
+    <h4
+        class="text-center text-muted display-5"
+        *ngIf="classes.length == 0"
+    >
+        <small>Search above to find classes...</small>
+    </h4>
 </div>

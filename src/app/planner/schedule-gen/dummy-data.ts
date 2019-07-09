@@ -1,56 +1,56 @@
-import { Class } from "src/app/shared/class.model";
-import { MeetingTime } from "src/app/shared/meeting-time.model";
+import { Class } from 'src/app/shared/class.model';
+import { MeetingTime } from 'src/app/shared/meeting-time.model';
 
 export class DummyData {
   public static classes: Class[] = [
     new Class(
-      "Class 1",
+      'Class 1',
       1,
-      "",
+      '',
       [
-        new MeetingTime("9:00 AM", "10:30 AM", "MW"),
-        new MeetingTime("3:00 PM", "4:15 PM", "F")
+        new MeetingTime('9:00 AM', '10:30 AM', 'MW'),
+        new MeetingTime('3:00 PM', '4:15 PM', 'F')
       ],
-      "",
-      ""
+      '',
+      ''
     ),
     new Class(
-      "Class 2",
+      'Class 2',
       1,
-      "",
+      '',
       [
-        new MeetingTime("8:15 AM", "10:00 AM", "TR"),
-        new MeetingTime("10:00 AM", "11:00 AM", "F")
+        new MeetingTime('8:15 AM', '10:00 AM', 'TR'),
+        new MeetingTime('10:00 AM', '11:00 AM', 'F')
       ],
-      "",
-      ""
+      '',
+      ''
     ),
     new Class(
-      "Class 3",
+      'Class 3',
       1,
-      "",
-      [new MeetingTime("3:15 PM", "4:30 PM", "MW")],
-      "",
-      ""
+      '',
+      [new MeetingTime('3:15 PM', '4:30 PM', 'MW')],
+      '',
+      ''
     ),
     new Class(
-      "Class 4",
+      'Class 4',
       1,
-      "",
-      [new MeetingTime("4:15 PM", "5:30 PM", "TR")],
-      "",
-      ""
+      '',
+      [new MeetingTime('4:15 PM', '5:30 PM', 'TR')],
+      '',
+      ''
     ),
     new Class(
-      "Class 5",
+      'Class 5',
       1,
-      "",
+      '',
       [
-        new MeetingTime("9:15 AM", "4:30 PM", "TR"),
-        new MeetingTime("1:00 PM", "2:00 PM", "F")
+        new MeetingTime('9:15 AM', '4:30 PM', 'TR'),
+        new MeetingTime('1:00 PM', '2:00 PM', 'F')
       ],
-      "",
-      ""
+      '',
+      ''
     )
   ];
 }

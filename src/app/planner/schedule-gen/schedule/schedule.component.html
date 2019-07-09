@@ -1,58 +1,52 @@
 <table>
-  <thead>
-    <tr>
-      <td></td>
-      <td>
-        Monday
-      </td>
-      <td>
-        Tuesday
-      </td>
-      <td>
-        Wednesday
-      </td>
-      <td>
-        Thursday
-      </td>
-      <td>
-        Friday
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let st of allStartTimes">
-      <td>{{ st }}</td>
-      <td *ngFor="let d of weekDays">
-        <ng-container *ngFor="let c of classes; index as a">
-          <ng-container *ngFor="let mt of c.meetingTimes; index as b">
-            <ng-container
-              *ngIf="
+    <thead>
+        <tr>
+            <td></td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let st of allStartTimes">
+            <td>{{ st }}</td>
+            <td *ngFor="let d of weekDays">
+                <ng-container *ngFor="let c of classes; index as a">
+                    <ng-container *ngFor="let mt of c.meetingTimes; index as b">
+                        <ng-container *ngIf="
                 mt.startTime == st &&
                 mt.weekCode.split('').includes(this.weekdayToCode(d))
-              "
-            >
-              <ng-template #popovercontent>
-                <b>Start Time:</b> {{ mt.startTime }}
-                <br />
-                <b>End Time:</b> {{ mt.endTime }}
-                <br />
-                <b>Professor:</b> {{ c.professor }}
-                <br />
-                <b>Subject:</b> {{ c.subject }}
-                <br />
-                <b>CRN: </b>{{ c.crn }}
-              </ng-template>
-              <div
-                [ngbPopover]="popovercontent"
-                triggers="mouseenter:mouseleave"
-                popoverTitle="{{ c.name }}"
-              >
-                {{ c.name }}
-              </div>
-            </ng-container>
-          </ng-container>
-        </ng-container>
-      </td>
-    </tr>
-  </tbody>
+              ">
+                            <ng-template #popovercontent>
+                                <b>Start Time:</b>
+                                {{ mt.startTime }}
+                                <br>
+                                <b>End Time:</b>
+                                {{ mt.endTime }}
+                                <br>
+                                <b>Professor:</b>
+                                {{ c.professor }}
+                                <br>
+                                <b>Subject:</b>
+                                {{ c.subject }}
+                                <br>
+                                <b>CRN:</b>
+                                {{ c.crn }}
+                            </ng-template>
+                            <!-- Popup with individual section info -->
+                            <div
+                                [ngbPopover]="popovercontent"
+                                triggers="mouseenter:mouseleave"
+                                popoverTitle="{{ c.name }}"
+                            >
+                                {{ c.name }}
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
 </table>

@@ -1,3 +1,4 @@
+// This is a settings file for the dropdown used in the search component. Moved here to reduce clutter.
 import {
   IMultiSelectOption,
   IMultiSelectTexts,

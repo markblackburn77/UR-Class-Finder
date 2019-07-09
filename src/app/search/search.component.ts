@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   classes: Class[];
 
   /** Boolean if server responds correctly */
-  serverUnreacheable: boolean = false;
+  serverUnreacheable = false;
 
   /** Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];

@@ -20,6 +20,9 @@ export class PlannerComponent implements OnInit {
     // Set the data in this component to master prospective classes list
     this.cart = this.classesService.getCurrentCart();
 
+    // NOTE: this below is currently not implemented. Instead, there is a messsage directing users
+    // back to the search component if no classes are in cart. I think this makes more sense.
+
     // If this route is visited and no classes are in cart, redirect to search
     // if (this.cart.length == 0) {
     //   this.router.navigate(["/"]);

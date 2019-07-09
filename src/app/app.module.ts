@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ClassesService } from './shared/classes.service';
 import { DropdownDirective } from './shared/dropdown.directive';
-// import { HttpModule, JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './shared/http.service';
 import { PlannerComponent } from './planner/planner.component';

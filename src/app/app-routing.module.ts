@@ -1,14 +1,14 @@
 // Imports for routing
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 // Imports for components
-import { SearchComponent } from "./search/search.component";
-import { PlannerComponent } from "./planner/planner.component";
+import { SearchComponent } from './search/search.component';
+import { PlannerComponent } from './planner/planner.component';
 
 const appRoutes: Routes = [
-  { path: "", component: SearchComponent },
-  { path: "planner", component: PlannerComponent }
+  { path: '', component: SearchComponent },
+  { path: 'planner', component: PlannerComponent }
 ];
 
 @NgModule({

@@ -5,7 +5,6 @@ import { HttpService } from '../shared/http.service';
 import { FormsModule } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { TableComponent } from '../table/table.component';
-import { Http } from '@angular/http';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -17,8 +16,7 @@ describe('SearchComponent', () => {
       imports: [FormsModule, MultiselectDropdownModule],
       providers: [
         { provide: ClassesService, useClass: ClassesService },
-        { provide: HttpService, useClass: HttpService },
-        { provide: Http }
+        { provide: HttpService, useClass: HttpService }
       ]
     }).compileComponents();
   }));
