@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { ClassesService } from "../shared/classes.service";
-import { Class } from "../shared/class.model";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ClassesService } from '../shared/classes.service';
+import { Class } from '../shared/class.model';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-planner",
-  templateUrl: "./planner.component.html",
-  styleUrls: ["./planner.component.scss"]
-  styleUrls: ["./planner.component.scss"],
+  selector: 'app-planner',
+  templateUrl: './planner.component.html',
+  styleUrls: ['./planner.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PlannerComponent implements OnInit {
@@ -15,11 +14,16 @@ export class PlannerComponent implements OnInit {
   cart: Class[];
 
   // Inject classesService
-  constructor(private classesService: ClassesService) {}
+  constructor(private classesService: ClassesService, private router: Router) {}
 
   ngOnInit() {
     // Set the data in this component to master prospective classes list
-    this.cart = this.classesService.getProspectiveClasses();
+    this.cart = this.classesService.getCurrentCart();
+
+    // If this route is visited and no classes are in cart, redirect to search
+    // if (this.cart.length == 0) {
+    //   this.router.navigate(["/"]);
+    // }
   }
 
   /**
