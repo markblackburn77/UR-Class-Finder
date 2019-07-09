@@ -1,3 +1,33 @@
-<p>
-  schedule-gen works!
-</p>
+<div
+    class="text-center"
+    id="calculateSchedulesSection"
+>
+    <h2 class="display-5 subtitle">Calculate all possible schedules</h2>
+    <h4 class="text-muted">
+        You can press the button below to calculate every possible schedule using
+    the classes you have selected above...
+    </h4>
+    <button
+        (click)="onGenerateScheduleButtonClick()"
+        class="btn btn-outline-primary mt-3"
+    >
+        Calculate
+    </button>
+    <span class="align-bottom ml-4">Limit to classes selected above</span>
+    <input
+        id="classesToIncludeCheckbox"
+        class="align-bottom"
+        type="checkbox"
+        [(ngModel)]="limitToCartClasses"
+    >
+</div>
+<div class="mt-4 container">
+    <div class="row">
+        <div
+            *ngFor="let schedulesList of allSchedules; index as i"
+            class="col-lg-6 pb-3 col-sm-12"
+        >
+            <app-schedule [classes]="allSchedules[i]"></app-schedule>
+        </div>
+    </div>
+</div>
