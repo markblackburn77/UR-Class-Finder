@@ -1,5 +1,8 @@
 <!-- Popup if backend server is unreacheable -->
-<div class="alert alert-warning text-center" *ngIf="serverUnreacheable">
+<div
+  class="alert alert-warning text-center server-unreacheable"
+  *ngIf="serverUnreacheable"
+>
   <a
     (click)="serverUnreacheable = false"
     class="close"
