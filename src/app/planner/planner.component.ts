@@ -33,6 +33,6 @@ export class PlannerComponent implements OnInit {
    */
   removeFromCart(c: Class) {
     this.classesService.removeFromCart(c);
-    this.cart = this.classesService.getProspectiveClasses();
+    this.cart = this.classesService.getCurrentCart();
   }
 }
