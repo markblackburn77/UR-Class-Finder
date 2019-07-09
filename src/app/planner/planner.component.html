@@ -1,4 +1,15 @@
-<app-table
-  [classes]="cart"
-  (removeButtonClicked)="removeFromCart($event)"
-></app-table>
+<div class="mt-4 mb-5">
+  <h1 class="text-primary display-4 text-center">Figure out your schedule.</h1>
+  <app-table
+    [classes]="cart"
+    (removeButtonClicked)="removeFromCart($event)"
+  ></app-table>
+  <h4 class="text-center text-muted display-5" *ngIf="cart.length == 0">
+    <small>
+      It looks like you don't have any more classes in your cart.
+      <a routerLink="">Go back to the search</a> to add more.
+    </small>
+  </h4>
+</div>
+<hr />
+<app-schedule-gen></app-schedule-gen>
