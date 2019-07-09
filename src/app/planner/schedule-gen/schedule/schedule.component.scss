@@ -1,0 +1,36 @@
+table {
+  // border: solid 1px #356da1;
+  font-size: 12px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px;
+  border-radius: 10px;
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
+
+  div {
+    background-color: #717e8a;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+  }
+
+  thead {
+    background-color: #356da1;
+    color: white;
+  }
+
+  td {
+    border: solid 1px black;
+    padding: 10px;
+  }
+
+  tr:last-child td:first-child {
+    border-top-left-radius: 10px;
+  }
+
+  tr:last-child td:last-child {
+    border-top-right-radius: 10px;
+  }
+}
