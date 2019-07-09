@@ -1,4 +1,6 @@
-import { MeetingTime } from "./meeting-time.model";
+import { MeetingTime } from './meeting-time.model';
+
+// Model for class object
 export class Class {
   public inCart: boolean;
   constructor(
@@ -7,7 +9,8 @@ export class Class {
     public professor: string,
     public meetingTimes: MeetingTime[],
     public location: string,
-    public subject: string
+    public subject: string,
+    public color: string = ''
   ) {
     this.inCart = false;
   }
