@@ -19,6 +19,9 @@ export class SearchComponent implements OnInit {
   /** Boolean if server responds correctly */
   serverUnreacheable = false;
 
+  /** Boolean for loading indicator */
+  fetchingData = false;
+
   /** Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];
   dropdownOptions = DropdownSettings.myOptions;
@@ -50,16 +53,19 @@ export class SearchComponent implements OnInit {
    * @param formData form data from template driven form
    */
   searchClasses(formData) {
+    this.fetchingData = true;
+    this.classes = [];
     this.httpService.sendSearchData(formData).subscribe(
       // Add classes in classes service if successful
       response => {
         this.classesService.loadClassesFromSearch(response);
+        this.classes = this.classesService.getClassesLoadedFromSearch();
+        this.fetchingData = false;
       },
       // Change variable for popup if error
-      error => (this.serverUnreacheable = true),
-      // If completed, render classes
-      () => {
-        this.classes = this.classesService.getClassesLoadedFromSearch();
+      error => {
+        this.serverUnreacheable = true;
+        this.fetchingData = false;
       }
     );
   }

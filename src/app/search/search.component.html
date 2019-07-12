@@ -118,8 +118,20 @@
     <!-- Placeholder text before data is loaded by search -->
     <h4
         class="text-center text-muted display-5"
-        *ngIf="classes.length == 0"
+        *ngIf="classes.length == 0 && !fetchingData"
     >
         <small>Search above to find classes...</small>
     </h4>
+    <h4
+        class="text-center text-muted display-5"
+        *ngIf="fetchingData"
+    >
+        <div
+            class="spinner-border"
+            role="status"
+        >
+            <span class="sr-only">Loading...</span>
+        </div>
+    </h4>
+
 </div>
