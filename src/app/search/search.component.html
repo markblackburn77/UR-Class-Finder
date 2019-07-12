@@ -161,7 +161,7 @@
             <!-- Planner button -->
             <div class="input-group m-1">
                 <button
-                    [disabled]="! this.classesService.getCurrentCart().length > 0"
+                    [disabled]="cartIsEmpty()"
                     class="btn btn-primary form-control"
                     routerLink="planner"
                 >

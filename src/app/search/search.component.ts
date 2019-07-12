@@ -60,6 +60,10 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  cartIsEmpty() {
+    return !(this.classesService.getCurrentCart().length > 0);
+  }
+
   /**
    * Sends the data from the form to the API and handles response
    *
