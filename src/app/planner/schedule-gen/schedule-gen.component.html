@@ -6,23 +6,38 @@
     <h2 class="display-5 subtitle">Calculate all possible schedules</h2>
     <h4 class="text-muted">
         You can press the button below to calculate every possible schedule using
-    the classes you have selected above...
+    every section of the classes you selected above. Alternatively, you can limit the generator to only the sections currently in your cart.
     </h4>
+    <div class="form-check mt-2">
+        <label class="form-check-label text-muted">
+
+            <input
+                id="classesToIncludeCheckbox"
+                class="form-check-input"
+                type="checkbox"
+                [(ngModel)]="limitToCartClasses"
+            >
+            Limit to sections already selected
+        </label>
+    </div>
     <button
         (click)="onGenerateScheduleButtonClick()"
         class="btn btn-outline-primary mt-3"
     >
         Calculate
     </button>
-    <span class="align-bottom ml-4">Limit to classes selected above</span>
-    <input
-        id="classesToIncludeCheckbox"
-        class="align-bottom"
-        type="checkbox"
-        [(ngModel)]="limitToCartClasses"
-    >
+
 </div>
 
+<h4 class="text-center text-muted display-5 mt-4">
+    <div
+        *ngIf="fetchingData"
+        class="spinner-border"
+        role="status"
+    >
+        <span class="sr-only">Loading...</span>
+    </div>
+</h4>
 <!-- Display all schedules here -->
 <div class="mt-4 container">
     <div class="row">

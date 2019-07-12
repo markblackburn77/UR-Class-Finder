@@ -27,6 +27,8 @@ export class ScheduleGenComponent implements OnInit {
   serverUnreacheable = false;
   /** Boolean for which set of sections to include in schedule generation */
   limitToCartClasses = false;
+  /** If data / calculations are being performed for loading icon */
+  fetchingData = false;
 
   // This is a selection of colors to be used when I decide to figure out how to add colors
   // colors = [
