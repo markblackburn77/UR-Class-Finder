@@ -181,13 +181,18 @@ export class ScheduleGenComponent implements OnInit {
         error => (this.serverUnreacheable = true),
         // If completed
         () => {
-          this.runGenerateSchedulesAlg(
-            this.classesService.getAllSectionsOfCurrentCart()
-          );
+          let allSecs = this.classesService.getAllSectionsOfCurrentCart();
+          this.assignRandomColors(allSecs);
+          this.runGenerateSchedulesAlg(allSecs);
+          this.allSchedules.sort((a, b) => b.length - a.length);
+          this.fetchingData = false;
         }
       );
     } else {
+      this.assignRandomColors(this.currCart);
       this.runGenerateSchedulesAlg(this.currCart);
+      this.allSchedules.sort((a, b) => b.length - a.length);
+      this.fetchingData = false;
     }
   }
 }
