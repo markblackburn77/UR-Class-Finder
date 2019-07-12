@@ -33,16 +33,14 @@
 
     <!-- ---------------- SEARCH FORM ----------------- -->
     <form
-        class="form-inline"
+        class="form-inline text-center"
         (ngSubmit)="onSubmit(f)"
         #f="ngForm"
+        style="width: 100%; margin: 0 auto;"
     >
-        <div
-            class="row mb-3 form-group"
-            style="margin: 0 auto;"
-        >
+        <div class="row mb-3 form-group col-10 offset-1">
             <!-- Class name input -->
-            <div class="input-group mr-2">
+            <div class="input-group m-1">
                 <input
                     id="className"
                     name="className"
@@ -50,10 +48,11 @@
                     class="form-control"
                     type="text"
                     placeholder="Class Name"
+                    size=17
                 >
             </div>
             <!-- CRN input -->
-            <div class="input-group mr-2">
+            <div class="input-group m-1 ">
                 <input
                     id="crn"
                     name="crn"
@@ -61,10 +60,11 @@
                     class="form-control"
                     type="text"
                     placeholder="CRN"
+                    size=10
                 >
             </div>
             <!-- Professor input -->
-            <div class="input-group mr-2">
+            <div class="input-group m-1">
                 <input
                     id="professor"
                     name="professor"
@@ -72,10 +72,11 @@
                     class="form-control"
                     type="text"
                     placeholder="Professor"
+                    size=17
                 >
             </div>
             <!-- Department dropdown -->
-            <div class="input-group mr-2">
+            <div class="input-group m-1">
                 <ss-multiselect-dropdown
                     id="department"
                     name="department"
@@ -87,21 +88,19 @@
                 ></ss-multiselect-dropdown>
             </div>
             <!-- Search button -->
-            <div class="input-group mr-2">
+            <div class="input-group m-1">
                 <button
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-primary form-control"
                     type="submit"
                 >
                     Search
                 </button>
             </div>
-            <!-- Search button -->
-            <div
-                class="input-group"
-                *ngIf="this.classesService.getCurrentCart().length > 0"
-            >
+            <!-- Planner button -->
+            <div class="input-group m-1">
                 <button
-                    class="btn btn-primary"
+                    [disabled]="! this.classesService.getCurrentCart().length > 0"
+                    class="btn btn-primary form-control"
                     routerLink="planner"
                 >
                     Go to planner
