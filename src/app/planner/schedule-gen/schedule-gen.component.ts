@@ -30,24 +30,20 @@ export class ScheduleGenComponent implements OnInit {
   /** If data / calculations are being performed for loading icon */
   fetchingData = false;
 
-  // This is a selection of colors to be used when I decide to figure out how to add colors
-  // colors = [
-  //   '#AA3939',
-  //   '#AAA839',
-  //   '#378b2e',
-  //   '#2f4073',
-  //   '#246D5E',
-  //   '#822b66',
-  //   '#AA5A39',
-  //   '#246d5e'
-  // ];
-
   ngOnInit() {}
+
+  assignRandomColors(classes: Class[]) {
+    for (let c of classes) {
+      c.color =
+        '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6);
+    }
+  }
 
   /**
    * Handle click of "Generate schedules" button.
    */
   onGenerateScheduleButtonClick() {
+    this.fetchingData = true;
     // Fetch the current cart from classes service
     this.currCart = this.classesService.getCurrentCart();
 
