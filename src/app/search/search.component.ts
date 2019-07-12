@@ -5,7 +5,7 @@ import { HttpService } from '../shared/http.service';
 import { NgForm } from '@angular/forms';
 import { DropdownSettings } from './dropdown.settings';
 import { MeetingTime } from '../shared/meeting-time.model';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-search',

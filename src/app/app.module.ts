@@ -18,7 +18,8 @@ import { ScheduleComponent } from './planner/schedule-gen/schedule/schedule.comp
 import {
   NgbPopoverModule,
   NgbPopoverConfig,
-  NgbModal
+  NgbModal,
+  NgbModalModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { ScrollBar } from '@ng-bootstrap/ng-bootstrap/util/scrollbar';
@@ -33,9 +34,7 @@ import { NgbModalWindow } from '@ng-bootstrap/ng-bootstrap/modal/modal-window';
     PlannerComponent,
     TableComponent,
     ScheduleGenComponent,
-    ScheduleComponent,
-    NgbModalBackdrop,
-    NgbModalWindow
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,8 @@ import { NgbModalWindow } from '@ng-bootstrap/ng-bootstrap/modal/modal-window';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbPopoverModule
+    NgbPopoverModule,
+    NgbModalModule
   ],
   providers: [
     ClassesService,
