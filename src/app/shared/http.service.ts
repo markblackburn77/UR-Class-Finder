@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class HttpService {
   // API Endpoints
-  private baseUrl = 'http://127.0.0.1:5000/';
+  // private baseUrl = 'http://127.0.0.1:5000/';
+  private baseUrl = 'https://damp-stream-31277.herokuapp.com/';
   private searchClassesUrl: string = this.baseUrl + 'SearchClasses';
   private sameClassesSearchUrl: string = this.baseUrl + 'SameClassSearch';
   private dateLastUpdatedUrl: string = this.baseUrl + 'dateLastUpdated';
