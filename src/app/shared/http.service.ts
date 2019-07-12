@@ -7,6 +7,7 @@ export class HttpService {
   private baseUrl = 'http://127.0.0.1:5000/';
   private searchClassesUrl: string = this.baseUrl + 'SearchClasses';
   private sameClassesSearchUrl: string = this.baseUrl + 'SameClassSearch';
+  private dateLastUpdatedUrl: string = this.baseUrl + 'dateLastUpdated';
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +35,13 @@ export class HttpService {
     const requestBody = { classes_names: namesArray };
 
     return this.sendPostRequest(requestBody, this.sameClassesSearchUrl);
+  }
+
+  /**
+   * Get date the data was last updated
+   */
+  getDateLastUpdated() {
+    return this.sendPostRequest(NaN, this.dateLastUpdatedUrl);
   }
 
   /**

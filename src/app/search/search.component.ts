@@ -23,6 +23,9 @@ export class SearchComponent implements OnInit {
   /** Boolean for loading indicator */
   fetchingData = false;
 
+  /** Date last updated */
+  dateLastUpdated: string;
+
   /** Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];
   dropdownOptions = DropdownSettings.myOptions;
@@ -47,6 +50,14 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // Set classes to classes loaded from search
     this.classes = this.classesService.getClassesLoadedFromSearch();
+    this.httpService.getDateLastUpdated().subscribe(
+      response => {
+        this.dateLastUpdated = response.toString();
+      },
+      error => {
+        this.dateLastUpdated = 'Not Available';
+      }
+    );
   }
 
   /**
