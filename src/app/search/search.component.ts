@@ -5,6 +5,7 @@ import { HttpService } from '../shared/http.service';
 import { NgForm } from '@angular/forms';
 import { DropdownSettings } from './dropdown.settings';
 import { MeetingTime } from '../shared/meeting-time.model';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-search',
@@ -39,7 +40,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private classesService: ClassesService, // Inject Classes Service
-    private httpService: HttpService // Inject HTTP Service
+    private httpService: HttpService, // Inject HTTP Service
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -151,5 +153,9 @@ export class SearchComponent implements OnInit {
       )
     ]);
     this.classes = this.classesService.getClassesLoadedFromSearch();
+  }
+
+  open(content) {
+    this.modalService.open(content, { windowClass: 'dark-window', size: 'lg' });
   }
 }

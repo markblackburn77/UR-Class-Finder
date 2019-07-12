@@ -38,14 +38,17 @@ ss-multiselect-dropdown {
   background-color: #e4e2e259 !important;
 }
 
-// Breakpoint to change CSS based on screen size
-// @media (max-width: 992px) {
-//   // .week-code-block,
-//   // .meeting-time-block,
-//   // .not-available-block {
-//   //   font-size: 8px;
-//   // }
-//   .additional {
-//     display: none;
-//   }
-// }
+.fa {
+  font-size: 17px;
+}
+
+.modal-title {
+  text-align: center;
+  color: #424242;
+  font-size: 40px;
+}
+
+.modal-content {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}

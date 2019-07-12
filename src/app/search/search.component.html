@@ -1,3 +1,58 @@
+<!-- Info modal template -->
+<ng-template
+    #content
+    let-d="dismiss"
+>
+    <div class="modal-header">
+        <h4
+            class="modal-title"
+            id="modal-basic-title"
+        >
+            Info
+        </h4>
+        <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="d('Cross click')"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Hey there. This app was created because I think that the Bannerweb search function for classes
+            <strong>could use some improvement</strong>
+            and I hope that this app can provide a good alternative.
+        </p>
+        <p>
+            With that being said,
+            <strong>
+                Bannerweb is the only reliable source of information regarding classes.
+            </strong>
+            Please use this app, but also please check that the information you get here is correct sooner than 10 minutes before class selection. I will do my best to keep this site up to date.
+        </p>
+        <p>
+            This site is not affiliated with the University of Richmond.
+        </p>
+        <p>
+            Finally, please feel free to contact me with any bugs / suggestions.
+        </p>
+        <p>
+            <strong>Email:</strong>
+            jack.ditto@richmond.edu
+        </p>
+        <p>
+            <strong>Digits:</strong>
+            (601) 874-9522
+        </p>
+        <p>
+            <strong>Classes Last Updated:</strong>
+            {{ dateLastUpdated }}
+        </p>
+    </div>
+    <div class="modal-footer"></div>
+</ng-template>
 <!-- Popup if backend server is unreacheable -->
 <div
     class="alert alert-warning text-center server-unreacheable"
@@ -28,6 +83,13 @@
     <h3 class="text-muted display-5 text-center pb-3 sub">
         <small>
             It's so much better than the Bannerweb one.
+            <a>
+                <i
+                    class="fa fa-info-circle fa-xs"
+                    (click)="open(content)"
+                    aria-hidden="true"
+                ></i>
+            </a>
         </small>
     </h3>
 

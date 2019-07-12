@@ -15,7 +15,15 @@ import { TableComponent } from './table/table.component';
 import { ScheduleGenComponent } from './planner/schedule-gen/schedule-gen.component';
 import { ScheduleComponent } from './planner/schedule-gen/schedule/schedule.component';
 
-import { NgbPopoverModule, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbPopoverModule,
+  NgbPopoverConfig,
+  NgbModal
+} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
+import { ScrollBar } from '@ng-bootstrap/ng-bootstrap/util/scrollbar';
+import { NgbModalBackdrop } from '@ng-bootstrap/ng-bootstrap/modal/modal-backdrop';
+import { NgbModalWindow } from '@ng-bootstrap/ng-bootstrap/modal/modal-window';
 
 @NgModule({
   declarations: [
@@ -25,7 +33,9 @@ import { NgbPopoverModule, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
     PlannerComponent,
     TableComponent,
     ScheduleGenComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    NgbModalBackdrop,
+    NgbModalWindow
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,16 @@ import { NgbPopoverModule, NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbPopoverModule
   ],
-  providers: [ClassesService, HttpService, NgbPopoverModule, NgbPopoverConfig],
-  bootstrap: [AppComponent]
+  providers: [
+    ClassesService,
+    HttpService,
+    NgbPopoverModule,
+    NgbPopoverConfig,
+    NgbModal,
+    NgbModalStack,
+    ScrollBar
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [NgbModalBackdrop, NgbModalWindow]
 })
 export class AppModule {}
