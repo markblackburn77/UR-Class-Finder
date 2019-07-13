@@ -124,51 +124,51 @@ export class SearchComponent implements OnInit {
   /**
    * Populate table with test classes to demo app without backend running
    */
-  onClickTestData() {
-    this.classesService.setClassesLoadedFromSearch([
-      new Class(
-        'Computer Science',
-        1234,
-        'Lewis Bartnett',
-        [new MeetingTime('9:00am', '10:15am', 'MWF')],
-        'JPSN 103',
-        'CMSC'
-      ),
-      new Class(
-        'Calculus',
-        5242,
-        'George Rogers',
-        [new MeetingTime('3:00pm', '5:00pm', 'TR')],
-        'JPSN 214',
-        'MATH'
-      ),
-      new Class(
-        'Spanish in the Media',
-        3255,
-        'Leslie Kissling',
-        [new MeetingTime('12:00pm', '1:15pm', 'MWF')],
-        'INTC 214',
-        'LAIS'
-      ),
-      new Class(
-        'Intro to Microeconomics',
-        6421,
-        'Grace Vanderwegen',
-        [new MeetingTime('3:00pm', '4:15pm', 'MWF')],
-        'BUS 300',
-        'ECON'
-      ),
-      new Class(
-        'Who do you Trust?',
-        1233,
-        'Carol Wittig',
-        [new MeetingTime('5:00pm', '6:00pm', 'TR')],
-        'LIBR 155',
-        'FYS'
-      )
-    ]);
-    this.classes = this.classesService.getClassesLoadedFromSearch();
-  }
+  // onClickTestData() {
+  //   this.classesService.setClassesLoadedFromSearch([
+  //     new Class(
+  //       'Computer Science',
+  //       1234,
+  //       'Lewis Bartnett',
+  //       [new MeetingTime('9:00am', '10:15am', 'MWF')],
+  //       'JPSN 103',
+  //       'CMSC'
+  //     ),
+  //     new Class(
+  //       'Calculus',
+  //       5242,
+  //       'George Rogers',
+  //       [new MeetingTime('3:00pm', '5:00pm', 'TR')],
+  //       'JPSN 214',
+  //       'MATH'
+  //     ),
+  //     new Class(
+  //       'Spanish in the Media',
+  //       3255,
+  //       'Leslie Kissling',
+  //       [new MeetingTime('12:00pm', '1:15pm', 'MWF')],
+  //       'INTC 214',
+  //       'LAIS'
+  //     ),
+  //     new Class(
+  //       'Intro to Microeconomics',
+  //       6421,
+  //       'Grace Vanderwegen',
+  //       [new MeetingTime('3:00pm', '4:15pm', 'MWF')],
+  //       'BUS 300',
+  //       'ECON'
+  //     ),
+  //     new Class(
+  //       'Who do you Trust?',
+  //       1233,
+  //       'Carol Wittig',
+  //       [new MeetingTime('5:00pm', '6:00pm', 'TR')],
+  //       'LIBR 155',
+  //       'FYS'
+  //     )
+  //   ]);
+  //   this.classes = this.classesService.getClassesLoadedFromSearch();
+  // }
 
   open(content) {
     this.modalService.open(content, { windowClass: 'dark-window', size: 'lg' });
