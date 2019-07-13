@@ -12,7 +12,8 @@ export class DummyData {
         new MeetingTime('3:00 PM', '4:15 PM', 'F')
       ],
       '',
-      ''
+      '',
+      123
     ),
     new Class(
       'Class 2',
@@ -23,7 +24,8 @@ export class DummyData {
         new MeetingTime('10:00 AM', '11:00 AM', 'F')
       ],
       '',
-      ''
+      '',
+      123
     ),
     new Class(
       'Class 3',
@@ -31,7 +33,8 @@ export class DummyData {
       '',
       [new MeetingTime('3:15 PM', '4:30 PM', 'MW')],
       '',
-      ''
+      '',
+      123
     ),
     new Class(
       'Class 4',
@@ -39,7 +42,8 @@ export class DummyData {
       '',
       [new MeetingTime('4:15 PM', '5:30 PM', 'TR')],
       '',
-      ''
+      '',
+      123
     ),
     new Class(
       'Class 5',
@@ -50,7 +54,8 @@ export class DummyData {
         new MeetingTime('1:00 PM', '2:00 PM', 'F')
       ],
       '',
-      ''
+      '',
+      123
     )
   ];
 }

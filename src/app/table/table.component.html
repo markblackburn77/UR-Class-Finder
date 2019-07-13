@@ -1,70 +1,63 @@
 <!-- -------------- SEARCH RESULTS TABLE ------------- -->
 <div class="table-responsive-xl">
-    <table class="table color-grey">
-        <!-- Table head -->
-        <thead>
-            <tr>
-                <th>Action</th>
-                <th>Class Name</th>
-                <th>CRN</th>
-                <th>Professor</th>
-                <th>Location</th>
-                <th>Subject</th>
-                <th>Meetings</th>
-            </tr>
-        </thead>
-        <!-- Table body -->
-        <tbody>
-            <!-- Row for every class -->
-            <tr *ngFor="let class of classes">
-                <td>
-                    <!-- Add / Remove button -->
-                    <button class="btn btn-outline-primary btn-sm ">
-                        <div
-                            *ngIf="!class.inCart"
-                            (click)="addBtnClicked(class)"
-                        >
-                            <span>Add</span>
-                        </div>
-                        <div
-                            *ngIf="class.inCart"
-                            (click)="removeBtnClicked(class)"
-                        >
-                            <span>Remove</span>
-                        </div>
-                    </button>
-                </td>
-                <!-- Class name -->
-                <td>{{ class.name }}</td>
-                <!-- CRN -->
-                <td>{{ class.crn }}</td>
-                <!-- Professor name -->
-                <td *ngIf="class.professor; else notApplicable">{{ class.professor }}</td>
-                <!-- Location -->
-                <td *ngIf="class.location; else notApplicable">{{ class.location }}</td>
-                <!-- Subject -->
-                <td>{{ class.subject }}</td>
-                <!-- Meeting times -->
-                <td *ngIf="class.meetingTimes.length > 0; else notApplicable">
-                    <div
-                        class="mb-1"
-                        *ngFor="let meeting of class.meetingTimes"
-                    >
-                        <div class="meeting-time">
-                            <span class="meeting-time-block">
-                                {{ meeting.startTime }} - {{ meeting.endTime }}
-                            </span>
-                            <span class="week-code-block">{{ meeting.weekCode }}</span>
-                        </div>
-                    </div>
-                </td>
-                <!-- Template if a peice of information is not available -->
-                <ng-template #notApplicable>
-                    <td>
-                        <span class="not-available-block">Not Available</span>
-                    </td>
-                </ng-template>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table color-grey">
+    <!-- Table head -->
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Class Name</th>
+        <th>Level</th>
+        <th>CRN</th>
+        <th>Professor</th>
+        <th>Subject</th>
+        <th>Meeting</th>
+      </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+      <!-- Row for every class -->
+      <tr *ngFor="let class of classes">
+        <td>
+          <!-- Add / Remove button -->
+          <button class="btn btn-outline-primary btn-sm ">
+            <div *ngIf="!class.inCart" (click)="addBtnClicked(class)">
+              <span>Add</span>
+            </div>
+            <div *ngIf="class.inCart" (click)="removeBtnClicked(class)">
+              <span>Remove</span>
+            </div>
+          </button>
+        </td>
+        <!-- Class name -->
+        <td>{{ class.name }}</td>
+        <!-- Level -->
+        <td *ngIf="class.level; else notApplicable">{{ class.level }}</td>
+        <!-- CRN -->
+        <td>{{ class.crn }}</td>
+        <!-- Professor name -->
+        <td *ngIf="class.professor; else notApplicable">
+          {{ class.professor }}
+        </td>
+        <!-- Subject -->
+        <td>{{ class.subject }}</td>
+        <!-- Meeting times -->
+        <td *ngIf="class.meetingTimes.length > 0; else notApplicable">
+          <div class="mb-1" *ngFor="let meeting of class.meetingTimes">
+            <div class="meeting-time">
+              <span class="meeting-time-block">
+                {{ meeting.startTime }} - {{ meeting.endTime }}
+              </span>
+              <span class="week-code-block">{{ meeting.weekCode }}</span>
+            </div>
+          </div>
+        </td>
+        <!-- Template if a peice of information is not available -->
+        <ng-template #notApplicable>
+          <td>
+            <span class="not-available-block">Not Available</span>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
 </div>

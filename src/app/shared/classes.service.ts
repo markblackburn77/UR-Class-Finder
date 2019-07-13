@@ -141,7 +141,8 @@ export class ClassesService {
         response[i]['professor'],
         [],
         response[i]['building'],
-        response[i]['department']
+        response[i]['department'],
+        response[i]['level']
       );
 
       // Check if the class has meeting time info before adding

@@ -10,6 +10,7 @@ export class Class {
     public meetingTimes: MeetingTime[],
     public location: string,
     public subject: string,
+    public level: number,
     public color: string = ''
   ) {
     this.inCart = false;
