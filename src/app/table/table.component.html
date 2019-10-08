@@ -1,5 +1,5 @@
 <!-- -------------- SEARCH RESULTS TABLE ------------- -->
-<div class="table-responsive-xl">
+<div class="table-wrapper">
   <table class="table color-grey">
     <!-- Table head -->
     <thead>
@@ -9,7 +9,6 @@
         <th>Level</th>
         <th>CRN</th>
         <th>Professor</th>
-        <th>Subject</th>
         <th>Meeting</th>
       </tr>
     </thead>
@@ -30,18 +29,21 @@
         </td>
         <!-- Class name -->
         <td>{{ class.name }}</td>
-        <!-- Level -->
-        <td *ngIf="class.level; else notApplicable">{{ class.level }}</td>
+        <!-- Level & Subject-->
+        <td *ngIf="class.level; else notApplicable">
+          {{ class.subject }} {{ class.level }}
+        </td>
         <!-- CRN -->
         <td>{{ class.crn }}</td>
         <!-- Professor name -->
         <td *ngIf="class.professor; else notApplicable">
           {{ class.professor }}
         </td>
-        <!-- Subject -->
-        <td>{{ class.subject }}</td>
         <!-- Meeting times -->
-        <td *ngIf="class.meetingTimes.length > 0; else notApplicable">
+        <td
+          style="white-space: nowrap;"
+          *ngIf="class.meetingTimes.length > 0; else notApplicable"
+        >
           <div class="mb-1" *ngFor="let meeting of class.meetingTimes">
             <div class="meeting-time">
               <span class="meeting-time-block">
