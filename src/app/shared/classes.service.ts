@@ -97,8 +97,8 @@ export class ClassesService {
   removeFromCart(c: Class) {
     c.inCart = false;
 
-    for (var i = 0; i < this.currentCart.length; i++) {
-      if (c.crn == this.currentCart[i].crn) {
+    for (let i = 0; i < this.currentCart.length; i++) {
+      if (c.crn === this.currentCart[i].crn) {
         this.currentCart.splice(i, 1);
       }
     }
@@ -130,12 +130,12 @@ export class ClassesService {
    */
   private readClassesFromResponse(response): Class[] {
     // Array to store loaded classes
-    let loadedClasses: Class[] = [];
+    const loadedClasses: Class[] = [];
 
     // Iterate through classes returned and add as objects
     for (let i = 0; i < response.length; i++) {
       // Create new class object
-      let newClass: Class = new Class(
+      const newClass: Class = new Class(
         response[i]['class_name'],
         response[i]['crn'],
         response[i]['professor'],
@@ -161,8 +161,8 @@ export class ClassesService {
       }
 
       // Check for duplicates already in classes list
-      let duplicates: Class[] = loadedClasses.filter(
-        x => x.crn == newClass.crn
+      const duplicates: Class[] = loadedClasses.filter(
+        x => x.crn === newClass.crn
       );
 
       // Add classes meeting times to already existing class
@@ -172,6 +172,15 @@ export class ClassesService {
           newClass.meetingTimes
         );
       } else {
+        // If the class is in the cart, reflect this
+        const classesAlreadyInCart: Class[] = this.currentCart.filter(
+          x => x.crn === newClass.crn
+        );
+
+        if (classesAlreadyInCart.length > 0) {
+          newClass.inCart = true;
+        }
+
         loadedClasses.push(newClass);
       }
     }
