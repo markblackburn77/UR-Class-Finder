@@ -32,14 +32,14 @@ export class SearchComponent implements OnInit {
   dropdownTextsSettings = DropdownSettings.myTexts;
   dropdownRegSettings = DropdownSettings.mySettings;
 
-  // Setup template driven form
-  @ViewChild('f') searchForm: NgForm;
+  // // Setup template driven form
+  // @ViewChild('f') searchForm: NgForm;
 
-  // Initial form values
-  className: '';
-  crn: '';
-  professor: '';
-  department: '';
+  // // Initial form values
+  // className: '';
+  // crn: '';
+  // professor: '';
+  // department: '';
 
   constructor(
     private classesService: ClassesService, // Inject Classes Service
@@ -108,12 +108,12 @@ export class SearchComponent implements OnInit {
   /**
    * Runs on form submission, sends correct data from forms to API
    */
-  onSubmit() {
+  onSubmit(form: NgForm) {
     // Format the data a little
     const formatted_data = {
-      class_name: this.searchForm.value.className,
-      crn: this.searchForm.value.crn,
-      professor: this.searchForm.value.professor,
+      class_name: form.value.className,
+      crn: form.value.crn,
+      professor: form.value.professor,
       department: this.dropdownSelectedValues
     };
 

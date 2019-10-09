@@ -94,7 +94,7 @@
 
   <!-- ---------------- SEARCH FORM ----------------- -->
 
-  <form class="search-form" (ngSubmit)="onSubmit()" #f="ngForm">
+  <form class="search-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <input
       id="className"
       type="text"
@@ -140,7 +140,7 @@
     <button
       class="search-form__btn search-form__planner-btn"
       [disabled]="cartIsEmpty()"
-      routerLink="planner"
+      routerLink="/planner"
     >
       Go to Planner
     </button>

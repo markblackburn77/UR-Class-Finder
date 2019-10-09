@@ -7,8 +7,9 @@ import { SearchComponent } from './search/search.component';
 import { PlannerComponent } from './planner/planner.component';
 
 const appRoutes: Routes = [
-  { path: '', component: SearchComponent },
-  { path: 'planner', component: PlannerComponent }
+  { path: '', component: SearchComponent, pathMatch: 'full' },
+  { path: 'planner', component: PlannerComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
