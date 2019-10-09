@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ClassesService } from '../shared/classes.service';
 import { Class } from '../shared/class.model';
 import { HttpService } from '../shared/http.service';
 import { NgForm } from '@angular/forms';
 import { DropdownSettings } from './dropdown.settings';
-import { MeetingTime } from '../shared/meeting-time.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
