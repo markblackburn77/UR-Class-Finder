@@ -26,6 +26,10 @@ export class SearchComponent implements OnInit {
   /** Date last updated */
   dateLastUpdated: string;
 
+  /** Subscriptions */
+  dateLastUpdatedSub: any;
+  searchDataSub: any;
+
   /** Settings for the multi select dropdown menu */
   dropdownSelectedValues: number[] = [];
   dropdownOptions = DropdownSettings.myOptions;
@@ -50,7 +54,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // Set classes to classes loaded from search
     this.classes = this.classesService.getClassesLoadedFromSearch();
-    this.httpService.getDateLastUpdated().subscribe(
+    this.dateLastUpdatedSub = this.httpService.getDateLastUpdated().subscribe(
       response => {
         this.dateLastUpdated = response.toString();
       },
@@ -72,7 +76,7 @@ export class SearchComponent implements OnInit {
   searchClasses(formData) {
     this.fetchingData = true;
     this.classes = [];
-    this.httpService.sendSearchData(formData).subscribe(
+    this.searchDataSub = this.httpService.sendSearchData(formData).subscribe(
       // Add classes in classes service if successful
       response => {
         this.classesService.loadClassesFromSearch(response);
